@@ -28,7 +28,7 @@
                 <th>Co-PIs</th>
                 <th>Attachment</th>
                 <th>Update Status</th>
-                <th>Call</th>
+                <th>Forward</th>
 
             </tr>
             <asp:Repeater ID="rptProposals" runat="server" OnItemDataBound="rptProposals_ItemDataBound">
@@ -65,7 +65,7 @@
                             <asp:Button ID="btnUpdateStatus" runat="server" Text="Update" CssClass="update-button" CommandName="UpdateStatus" CommandArgument='<%# Eval("ProposalID") %>' OnClick="btnUpdateStatus_Click" />
                         </td>
                         <td>
-                            <asp:Button ID="Meating" runat="server" Text="Meeting" CssClass="update-button" CommandName="meeting" CommandArgument='<%# Eval("ProposalID") %>' OnClick="Meating_Click" OnClientClick="target='_blank';" />
+                            <asp:Button ID="Meating" runat="server" Text="To.." CssClass="update-button" CommandName="meeting" CommandArgument='<%# Eval("ProposalID") %>' OnClick="Meating_Click" OnClientClick="target='_blank';" />
                         </td>
                     </tr>
                 </ItemTemplate>

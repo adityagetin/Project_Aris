@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Microsoft.SqlServer.Server;
+using System.Configuration;
+
+
 
 namespace Project_Aris
 {
@@ -21,8 +15,7 @@ namespace Project_Aris
 
         protected void Login(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=ADITYA-PAL\\SQLEXPRESS;Initial Catalog=Project_Aris;Integrated Security=True;";
-
+            string connectionString = ConfigurationManager.ConnectionStrings["connectionstr"].ConnectionString;
 
             if (Login_UserID.Text == "" || Login_Pass.Text=="")
             {
@@ -159,8 +152,8 @@ namespace Project_Aris
         {
             string roleID = null;
 
-            string connectionString = "Data Source=ADITYA-PAL\\SQLEXPRESS;Initial Catalog=Project_Aris;Integrated Security=True;";
 
+            string connectionString = ConfigurationManager.ConnectionStrings["connectionstr"].ConnectionString;
 
 
             using (SqlConnection connection = new SqlConnection(connectionString))

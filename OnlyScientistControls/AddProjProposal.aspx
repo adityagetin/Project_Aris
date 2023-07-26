@@ -58,10 +58,8 @@
                         <div class="input-box">
                             <label for="txtPropType">Proposal Type:</label>
                             <asp:DropDownList ID="txtPropType" runat="server" CssClass="dropdown">
-                                <asp:ListItem>T1</asp:ListItem>
-                                <asp:ListItem>T2</asp:ListItem>
-                                <asp:ListItem>T3</asp:ListItem>
-                                <asp:ListItem>T4</asp:ListItem>
+                                <asp:ListItem>Institute Project</asp:ListItem>
+                                <asp:ListItem>Externaly Funded</asp:ListItem>
                             </asp:DropDownList>
                         </div>
                         <div class="input-box">

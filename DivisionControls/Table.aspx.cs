@@ -177,7 +177,7 @@ namespace Project_Aris
 
         protected void Meating(int id) {
             Session["Pid"] = id.ToString();
-            Response.Redirect("Review.aspx");
+            Response.Redirect("../DivisionControls/Farward.aspx");
 
         }
     }
