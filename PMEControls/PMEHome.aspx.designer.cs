@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project_Aris
+namespace Project_Aris.PMEControls
 {
 
 
-    public partial class Home
+    public partial class PMEHome
     {
 
         /// <summary>

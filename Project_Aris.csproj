@@ -102,7 +102,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DivisionControls\DivisionHome.aspx" />
     <Content Include="DivisionControls\Farward.aspx" />
+    <Content Include="OnlyScientistControls\ScvientistHome.aspx" />
     <Content Include="PMEControls\Accept.aspx" />
     <Content Include="OnlyScientistControls\AddProjProposal.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -130,6 +132,7 @@
     <Content Include="Images\human-icon.png" />
     <Content Include="Images\ivribaner.png" />
     <Content Include="Images\Science.png" />
+    <Content Include="PMEControls\PMEHome.aspx" />
     <Content Include="PMEControls\ProjProposal.aspx" />
     <Content Include="PMEControls\ProjProposalApprovalProcess.aspx" />
     <Content Include="PMEControls\Review.aspx" />
@@ -168,8 +171,8 @@
     <Content Include="Style\form.css" />
     <Content Include="Style\style.css" />
     <Content Include="Style\table.css" />
-    <Content Include="OnlyScientistControls\SubmissionsTable.aspx" />
-    <Content Include="DivisionControls\Table.aspx" />
+    <Content Include="DivisionControls\SubmissionsTable.aspx" />
+    <Content Include="OnlyScientistControls\Table.aspx" />
     <Content Include="AdminControls\UpdateRole.aspx" />
     <Content Include="AdminControls\user.aspx" />
     <Content Include="AdminControls\ViewScientist.aspx" />
@@ -208,12 +211,26 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DivisionControls\DivisionHome.aspx.cs">
+      <DependentUpon>DivisionHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DivisionControls\DivisionHome.aspx.designer.cs">
+      <DependentUpon>DivisionHome.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DivisionControls\Farward.aspx.cs">
       <DependentUpon>Farward.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="DivisionControls\Farward.aspx.designer.cs">
       <DependentUpon>Farward.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OnlyScientistControls\ScvientistHome.aspx.cs">
+      <DependentUpon>ScvientistHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OnlyScientistControls\ScvientistHome.aspx.designer.cs">
+      <DependentUpon>ScvientistHome.aspx</DependentUpon>
     </Compile>
     <Compile Include="PMEControls\Accept.aspx.cs">
       <DependentUpon>Accept.aspx</DependentUpon>
@@ -247,6 +264,13 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PMEControls\PMEHome.aspx.cs">
+      <DependentUpon>PMEHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PMEControls\PMEHome.aspx.designer.cs">
+      <DependentUpon>PMEHome.aspx</DependentUpon>
     </Compile>
     <Compile Include="PMEControls\ProjProposal.aspx.cs">
       <DependentUpon>ProjProposal.aspx</DependentUpon>
@@ -298,18 +322,18 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="OnlyScientistControls\SubmissionsTable.aspx.cs">
+    <Compile Include="DivisionControls\SubmissionsTable.aspx.cs">
       <DependentUpon>SubmissionsTable.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="OnlyScientistControls\SubmissionsTable.aspx.designer.cs">
+    <Compile Include="DivisionControls\SubmissionsTable.aspx.designer.cs">
       <DependentUpon>SubmissionsTable.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DivisionControls\Table.aspx.cs">
+    <Compile Include="OnlyScientistControls\Table.aspx.cs">
       <DependentUpon>Table.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DivisionControls\Table.aspx.designer.cs">
+    <Compile Include="OnlyScientistControls\Table.aspx.designer.cs">
       <DependentUpon>Table.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminControls\UpdateRole.aspx.cs">

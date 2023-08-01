@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Web;
-using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -28,6 +21,7 @@ namespace Project_Aris
                 BindDropdownItems();
                 scientID = Convert.ToInt32(Session["ID"]);
                 Supervisor = Convert.ToString(Session["Supervisor"]);
+
                 PopulateScientistsDropDown();
                 SetDivIDFromDatabase(scientID);
                 txtPropSubDate.Text = DateTime.Now.ToString("yyyy-MM-dd");

@@ -27,8 +27,6 @@
                 <th>PI</th>
                 <th>Co-PIs</th>
                 <th>Attachment</th>
-                <th>Update Status</th>
-                <th>Forward</th>
 
             </tr>
             <asp:Repeater ID="rptProposals" runat="server" OnItemDataBound="rptProposals_ItemDataBound">
@@ -54,18 +52,6 @@
                         <td><%# Eval("PropCoPIs") %></td>
                         <td>
                             <a href='<%# Eval("PropAttachment") %>' target="_blank" id ="Attach">View Attachment</a>
-                        </td>
-
-                        <td>
-                            <asp:DropDownList ID="ddlStatus" runat="server" CssClass="status-field">
-                                <asp:ListItem Text="Pending" Value="Pending"></asp:ListItem>
-                                <asp:ListItem Text="Approved" Value="Approved"></asp:ListItem>
-                                <asp:ListItem Text="Rejected" Value="Rejected"></asp:ListItem>
-                            </asp:DropDownList><br />
-                            <asp:Button ID="btnUpdateStatus" runat="server" Text="Update" CssClass="update-button" CommandName="UpdateStatus" CommandArgument='<%# Eval("ProposalID") %>' OnClick="btnUpdateStatus_Click" />
-                        </td>
-                        <td>
-                            <asp:Button ID="Meating" runat="server" Text="To.." CssClass="update-button" CommandName="meeting" CommandArgument='<%# Eval("ProposalID") %>' OnClick="Meating_Click" OnClientClick="target='_blank';" />
                         </td>
                     </tr>
                 </ItemTemplate>

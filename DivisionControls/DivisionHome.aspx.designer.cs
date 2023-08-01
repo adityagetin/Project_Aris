@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Project_Aris
+namespace Project_Aris.DivisionControls
 {
 
 
-    public partial class Home
+    public partial class DivisionHome
     {
 
         /// <summary>

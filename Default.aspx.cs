@@ -1,36 +1,107 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Configuration;
-
-
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Ajax.Utilities;
 
 namespace Project_Aris
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
+        int[] scientistIdsArray=null;
+        int[] JDR=null;
         protected void Page_Load(object sender, EventArgs e)
-        {
 
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["connectionstr"].ConnectionString;
+            scientistIdsArray = GetScientistIdsWithMinRoleForDivision(connectionString);
+            JDR = GetJDR(connectionString, 31);
+            scientistIdsArray=scientistIdsArray.Except(JDR).ToArray();
+
+        }
+
+        private int[] GetScientistIdsWithMinRoleForDivision(string connectionString)
+        {
+            List<int> scientistIds = new List<int>();
+
+            // SQL query to find the minimum role ID for each division and corresponding Scientist IDs
+            string query = @"
+            SELECT S.ScientID
+            FROM Scientist AS S
+            INNER JOIN (
+                SELECT DivID, MIN(DesigID) AS MinRoleId
+                FROM Scientist
+                GROUP BY DivID
+            ) AS MinRoleTable ON S.DivID = MinRoleTable.DivID AND S.DesigID = MinRoleTable.MinRoleId";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                // Process the query results and store the Scientist IDs in the list
+                while (reader.Read())
+                {
+                    int scientistId = Convert.ToInt32(reader["ScientID"]);
+                    scientistIds.Add(scientistId);
+                }
+
+                reader.Close();
+            }
+
+            // Convert the list to an array and return it
+            return scientistIds.ToArray();
+        }
+
+
+        private int[] GetJDR(string connectionString, int divID)
+        {
+            List<int> JDR = new List<int>();
+
+            // SQL query to find the minimum DesidID for the specified division and corresponding Scientist IDs
+            string query = @"
+            SELECT ScientID
+            FROM Scientist
+            WHERE DivID = @divID AND DesigID = (SELECT MIN(DesigID) FROM Scientist WHERE DivID = @divID)";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@divID", divID);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                // Process the query results and store the Scientist IDs in the list
+                while (reader.Read())
+                {
+                    int scientistId = Convert.ToInt32(reader["ScientID"]);
+                    JDR.Add(scientistId);
+                }
+
+                reader.Close();
+            }
+
+            // Convert the list to an array and return it
+            return JDR.ToArray();
         }
 
         protected void Login(object sender, EventArgs e)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["connectionstr"].ConnectionString;
 
-            if (Login_UserID.Text == "" || Login_Pass.Text=="")
+            if (Login_UserID.Text == "" || Login_Pass.Text == "")
             {
                 error.Text = "Kindly Fill You ID & Password !";
-
 
             }
             else
             {
-                
+
                 int inputUserID = int.Parse(Login_UserID.Text);
                 string inputPassword = Login_Pass.Text;
                 DateTime inputDate = DateTime.Now;
-
-
 
                 // Create a SqlConnection object
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -40,53 +111,51 @@ namespace Project_Aris
                         // Open the connection
                         connection.Open();
 
-                        
-
                         // Query to fetch the UserID and Password from the database
                         string query = "SELECT UserID, Password, RoleID, FirstName, SupervisorID FROM [User] WHERE UserID = @UserID";
                         using (SqlCommand command = new SqlCommand(query, connection))
                         {
-                            
+
                             // Add parameter for the input UserID
                             command.Parameters.AddWithValue("@UserID", inputUserID);
 
                             // Execute the query and process the results
                             SqlDataReader reader = command.ExecuteReader();
-                            
+
 
 
                             if (reader.Read())
-                            {   
+                            {
                                 int u = reader.GetInt32(0);
-
-                                
                                 Console.WriteLine(u);
                                 int storedUserID = u;
                                 string storedPassword = reader.GetString(1);
                                 int roleID = reader.GetInt32(2);
                                 string firstName = reader.GetString(3);
-                                string supervisor = reader.GetInt32(4).ToString();
+                                
 
                                 Session["ID"] = storedUserID;
                                 Session["Name"] = firstName;
-                                Session["SupervioserID"]=supervisor;
+                                
 
-                                if ((storedUserID == inputUserID )&& (storedPassword == inputPassword))
+                                if ((storedUserID == inputUserID) && (storedPassword == inputPassword))
                                 {
-                                    
+
                                     string role = Convert.ToString(roleID);
                                     if (role != null)
                                     {
-                                        // Redirect users based on their RoleID
-                                        switch (role)
-                                        {  
-                                            case "1":
-
-                                                Response.Redirect("AdminControls/Welcome_Admin.aspx");
-                                                break;
-                                            default:
-                                                Response.Redirect("Home.aspx");
-                                                break;
+                                        if (scientistIdsArray.Contains(storedUserID))
+                                        {
+                                            Response.Redirect("\\DivisionControls\\DivisionHome.aspx");
+                                        }
+                                        else if (JDR.Contains(storedUserID))
+                                        {
+                                            Response.Redirect("\\PMEControls\\PMEHome.aspx");
+                                        }
+                                        else {
+                                            Response.Redirect("\\OnlyScientistControls\\ScvientistHome.aspx");
+                                            string supervisor = reader.GetInt32(4).ToString();
+                                            Session["SupervioserID"] = supervisor;
                                         }
                                     }
                                     else
@@ -113,29 +182,29 @@ namespace Project_Aris
                         string lastlogin = "UPDATE [User]SET LastLogin = @LastLogin WHERE UserID = @UserID;";
                         using (SqlCommand command1 = new SqlCommand(lastlogin, connection))
                         {
-                            try {
+                            try
+                            {
                                 connection.Open();
                                 command1.Parameters.AddWithValue("@UserID", inputUserID);
                                 command1.Parameters.AddWithValue("@LastLogin", inputDate);
-
-
                                 command1.ExecuteNonQuery();
                                 connection.Close();
 
 
-                            } catch (Exception ex)
-                            {  
+                            }
+                            catch (Exception ex)
+                            {
                                 error.Text = ex.ToString();
 
                             }
-                            
+
                         }
 
 
 
 
                         // Close the connection
-                        
+
                     }
                     catch (Exception ex)
                     {
@@ -148,33 +217,7 @@ namespace Project_Aris
             }
         }
 
-        private string GetRoleIDFromDatabase(string userID)
-        {
-            string roleID = null;
-
-
-            string connectionString = ConfigurationManager.ConnectionStrings["connectionstr"].ConnectionString;
-
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                string query = "SELECT RoleID FROM Users WHERE UserID = @UserID";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@UserID", userID);
-
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    roleID = reader["RoleID"].ToString();
-                }
-                reader.Close();
-            }
-            return roleID;
-        }
-        
-            }
+    }
 
 
 }
