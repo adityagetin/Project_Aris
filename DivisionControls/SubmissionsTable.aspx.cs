@@ -12,7 +12,7 @@ namespace Project_Aris
 {
     public partial class SubmissionsTable : System.Web.UI.Page
     {
-        string connectionString = "Data Source=ADITYA-PAL\\SQLEXPRESS;Initial Catalog=Project_Aris;Integrated Security=True;";
+        readonly string connectionString = "Data Source=ADITYA-PAL\\SQLEXPRESS;Initial Catalog=Project_Aris;Integrated Security=True;";
         protected void Page_Load(object sender, EventArgs e)
         {   
             if (!IsPostBack)
@@ -35,32 +35,53 @@ namespace Project_Aris
                 rptSubmissions.DataBind();
             }
         }
-
         protected void rptSubmissions_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            if (e.CommandName == "UpdateSubmission")
+            if (e.CommandName == "Forward")
             {
                 string[] values = e.CommandArgument.ToString().Split(',');
-                DropDownList ddlStatus = (DropDownList)e.Item.FindControl("DropDownList1");
-                string newStatus = ddlStatus.SelectedValue;
+                string newStatus = "Forward to PME";
                 string submissionID = values[0];
                 string proposalID = values[1];
                 string scientID = values[2];
                 string supervisorID = values[3];
-                string comment = values[6];
                 string submissionDate = values[5];
 
+                Session["Pid"]=proposalID;
 
                 UpdateSubmissionStatus(submissionID, newStatus);
 
-                InsertIntoProjProposalApprovalProcess(submissionID,supervisorID,newStatus,submissionDate,comment);
+                UpdateProjProposal(proposalID,newStatus);
 
+                InsertIntoProjProposalApprovalProcess(submissionID,supervisorID,newStatus,submissionDate,newStatus);
 
-                // Refresh the page to reflect the updated status
-                BindSubmissionData();
+                Response.Redirect("Farward.aspx");
             }
         }
+        protected void UpdateProjProposal(string PID, string Status)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "UPDATE [ProjProposal] SET [PropPresentStatus] = @Status WHERE [ProposalID] = @ID";
 
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@Status", Status);
+                    command.Parameters.AddWithValue("@ID", PID);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                string error = ex.Data.ToString();
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showAlert", $"alert('{error}');", true);
+                Thread.Sleep(10000);
+                Response.Redirect("Default.aspx");
+            }
+
+        }
         protected void UpdateSubmissionStatus(string submissionID, string newStatus)
         {
             try

@@ -6,7 +6,6 @@ using System.Web.UI.WebControls;
 
 namespace Project_Aris
 {
-
     public partial class AddProjProposal : System.Web.UI.Page
     {
         string connectionString = "Data Source=ADITYA-PAL\\SQLEXPRESS;Initial Catalog=Project_Aris;Integrated Security=True;";
@@ -18,10 +17,10 @@ namespace Project_Aris
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack) {
-                BindDropdownItems();
+                
                 scientID = Convert.ToInt32(Session["ID"]);
-                Supervisor = Convert.ToString(Session["Supervisor"]);
-
+                Supervisor = Convert.ToString(Session["SupervioserID"]);
+                BindDropdownItems();
                 PopulateScientistsDropDown();
                 SetDivIDFromDatabase(scientID);
                 txtPropSubDate.Text = DateTime.Now.ToString("yyyy-MM-dd");

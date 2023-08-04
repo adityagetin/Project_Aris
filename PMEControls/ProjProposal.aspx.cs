@@ -30,9 +30,8 @@ namespace Project_Aris
             string connectionString = "Data Source=ADITYA-PAL\\SQLEXPRESS;Initial Catalog=Project_Aris;Integrated Security=True;";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT * FROM ProjProposal WHERE ScientID="+SID+"";
+                string query = "SELECT p.* FROM ProjProposal p INNER JOIN ProjProposalApprovalProcess app ON p.ProposalID = app.ProposalID;";
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@ScientID", SID);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);

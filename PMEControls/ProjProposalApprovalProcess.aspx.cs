@@ -31,8 +31,9 @@ namespace Project_Aris
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT * FROM ProjProposalApprovalProcess WHERE [SupervisorID]="+ Session["ID"].ToString() + "";
+                string query = "SELECT * FROM ProjProposalApprovalProcess WHERE [SubmissionStatus]=@s ";
                 SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@s", "UNDER REVIEW");
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);

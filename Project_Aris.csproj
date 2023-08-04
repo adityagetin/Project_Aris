@@ -104,6 +104,7 @@
   <ItemGroup>
     <Content Include="DivisionControls\DivisionHome.aspx" />
     <Content Include="DivisionControls\Farward.aspx" />
+    <Content Include="DivisionControls\ProjProposalSubmission.aspx" />
     <Content Include="OnlyScientistControls\ScvientistHome.aspx" />
     <Content Include="PMEControls\Accept.aspx" />
     <Content Include="OnlyScientistControls\AddProjProposal.aspx" />
@@ -225,6 +226,13 @@
     <Compile Include="DivisionControls\Farward.aspx.designer.cs">
       <DependentUpon>Farward.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DivisionControls\ProjProposalSubmission.aspx.cs">
+      <DependentUpon>ProjProposalSubmission.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DivisionControls\ProjProposalSubmission.aspx.designer.cs">
+      <DependentUpon>ProjProposalSubmission.aspx</DependentUpon>
+    </Compile>
     <Compile Include="OnlyScientistControls\ScvientistHome.aspx.cs">
       <DependentUpon>ScvientistHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -239,7 +247,7 @@
     <Compile Include="PMEControls\Accept.aspx.designer.cs">
       <DependentUpon>Accept.aspx</DependentUpon>
     </Compile>
-    <Compile Include="OnlyScientistControls\AddProjProposal.aspx.cs">
+    <Compile Include="OnlyScientistControls\AddProjProposal.cs">
       <DependentUpon>AddProjProposal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>

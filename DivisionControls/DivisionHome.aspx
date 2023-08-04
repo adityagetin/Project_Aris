@@ -13,12 +13,14 @@
             <h3>HELLO! <asp:Label runat="server" ID="name"></asp:Label></h3>
         </div>
         <div class="options">
-            <a href="#" onclick ="loadpage('Table')">
+            <a href="#" onclick="loadPage(Proposals)">
+                View Proposals
+            </a>
+
+            <a href="#" onclick ="loadPage('Table')">
                 View Submissions
             </a>
-            <a href="#" onclick ="loadpage('Fwb')">
-                Forward Proposals
-            </a>
+            
             <a href="../Default.aspx">
                 LogOut!
             </a>
@@ -28,10 +30,9 @@
         <div id ="Table" class="page">
             <iframe src="SubmissionsTable.aspx" frameborder="0"></iframe>
         </div>
-        <div id="Fwb" class="page">
-            <iframe src="Farward.aspx" frameborder="0"></iframe>
+        <div id="Proposals" class="page">
+            <iframe src="ProjProposalSubmission.aspx" frameborder="0"></iframe>
         </div>
-        
     </div>
     <script src="../Scripts/PageScript.js"></script>
 </body>

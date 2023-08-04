@@ -14,18 +14,14 @@ namespace Project_Aris.DivisionControls
             if (!IsPostBack)
             {
                 Bind_Forward_To();
-
             }
             ProposalID.Text = Session["Pid"].ToString();
             Forwarder.Text = Session["ID"].ToString();
-
-
         }
 
-        private void Bind_Forward_To() {
-            
+        private void Bind_Forward_To() {         
 
-            string query = "SELECT CONCAT(FirstName,'-',UserID) AS ScientistName, UserID FROM [User] WHERE RoleId <= 5 ";
+            string query = "SELECT CONCAT(Fname,' ',Lname,'-',ScientID) AS ScientistName, ScientID FROM [Scientist] WHERE DivID = 31 ";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -37,7 +33,7 @@ namespace Project_Aris.DivisionControls
                         while (reader.Read())
                         {
                             string scientistName = reader["ScientistName"].ToString();
-                            string scientistID = reader["UserID"].ToString();
+                            string scientistID = reader["ScientID"].ToString();
                             ListItem item = new ListItem(scientistName, scientistID);
                             ddlPME.Items.Add(item);
                         }
@@ -56,7 +52,6 @@ namespace Project_Aris.DivisionControls
             string comment = Convert.ToString(Comment.Text);
 
             Insert_From(PropID, action, forwardTo, forwardFrom,Date,comment);
-
             Update_supervioserID(PropID,forwardTo);
 
         }
@@ -85,6 +80,16 @@ namespace Project_Aris.DivisionControls
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@SupervisoerID", forwardTo);
+                cmd.Parameters.AddWithValue("@ProposalID", PropID);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+            string qurey2 = "UPDATE [ProjProposalApprovalProcess] SET [SupervisoerID]=@SupervisoerID WHERE  [ProposalID]= @ProposalID ";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand(qurey2, conn);
                 cmd.Parameters.AddWithValue("@SupervisoerID", forwardTo);
                 cmd.Parameters.AddWithValue("@ProposalID", PropID);
 

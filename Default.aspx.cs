@@ -24,8 +24,6 @@ namespace Project_Aris
         private int[] GetScientistIdsWithMinRoleForDivision(string connectionString)
         {
             List<int> scientistIds = new List<int>();
-
-            // SQL query to find the minimum role ID for each division and corresponding Scientist IDs
             string query = @"
             SELECT S.ScientID
             FROM Scientist AS S
@@ -79,11 +77,9 @@ namespace Project_Aris
                     int scientistId = Convert.ToInt32(reader["ScientID"]);
                     JDR.Add(scientistId);
                 }
-
                 reader.Close();
             }
 
-            // Convert the list to an array and return it
             return JDR.ToArray();
         }
 
@@ -94,7 +90,6 @@ namespace Project_Aris
             if (Login_UserID.Text == "" || Login_Pass.Text == "")
             {
                 error.Text = "Kindly Fill You ID & Password !";
-
             }
             else
             {
@@ -132,8 +127,9 @@ namespace Project_Aris
                                 string storedPassword = reader.GetString(1);
                                 int roleID = reader.GetInt32(2);
                                 string firstName = reader.GetString(3);
-                                
+                                string supervisor = reader.GetInt32(4).ToString();
 
+                                Session["SupervioserID"] = supervisor;
                                 Session["ID"] = storedUserID;
                                 Session["Name"] = firstName;
                                 
@@ -154,13 +150,12 @@ namespace Project_Aris
                                         }
                                         else {
                                             Response.Redirect("\\OnlyScientistControls\\ScvientistHome.aspx");
-                                            string supervisor = reader.GetInt32(4).ToString();
-                                            Session["SupervioserID"] = supervisor;
+                                            
                                         }
                                     }
                                     else
                                     {
-                                        // Invalid UserID, handle appropriately (e.g., display error message)
+                                        error.Text = "Invalid User";
                                     }
                                 }
                                 else
@@ -188,9 +183,6 @@ namespace Project_Aris
                                 command1.Parameters.AddWithValue("@UserID", inputUserID);
                                 command1.Parameters.AddWithValue("@LastLogin", inputDate);
                                 command1.ExecuteNonQuery();
-                                connection.Close();
-
-
                             }
                             catch (Exception ex)
                             {
@@ -200,11 +192,7 @@ namespace Project_Aris
 
                         }
 
-
-
-
-                        // Close the connection
-
+                        connection.Close();
                     }
                     catch (Exception ex)
                     {
