@@ -30,27 +30,6 @@
                         <div class="input-box">
                             <label for="txtPropUnderDomain">Domain:</label>
                              <asp:DropDownList ID="txtPropUnderDomain" runat="server" CssClass="dropdown">
-                                <asp:ListItem>Animal Genetics</asp:ListItem>
-                                <asp:ListItem>B&M Div</asp:ListItem>
-                                 <asp:ListItem>Biological Standardization</asp:ListItem>
-                                 <asp:ListItem>BP Div</asp:ListItem>
-                                 <asp:ListItem>CADRAD</asp:ListItem>
-                                 <asp:ListItem>CWL</asp:ListItem>
-                                 <asp:ListItem>Immunology Section</asp:ListItem>
-                                 <asp:ListItem>Medicine</asp:ListItem>
-                                 <asp:ListItem>Parasitology</asp:ListItem>
-                                 <asp:ListItem>Pathology</asp:ListItem>
-                                 <asp:ListItem>Surgery</asp:ListItem>
-                                 <asp:ListItem>Veterinary Biotechnology</asp:ListItem>
-                                 <asp:ListItem>Veterinary Public Health</asp:ListItem>
-                                 <asp:ListItem>Animal Genetics</asp:ListItem>
-                                 <asp:ListItem>Animal Nutrition</asp:ListItem>
-                                 <asp:ListItem>Animal Reproduction Division</asp:ListItem>
-                                 <asp:ListItem>Livestock Production Management</asp:ListItem>
-                                 <asp:ListItem>Livestock Products Technology</asp:ListItem>
-                                 <asp:ListItem>Physiology & Climatology</asp:ListItem>
-                                 <asp:ListItem>Biochemistry</asp:ListItem>
-                                 <asp:ListItem>JD (EE)/Extension Education/KVK</asp:ListItem>
                          
                             </asp:DropDownList>
                         </div>

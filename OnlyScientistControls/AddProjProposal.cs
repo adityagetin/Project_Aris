@@ -21,12 +21,29 @@ namespace Project_Aris
                 scientID = Convert.ToInt32(Session["ID"]);
                 Supervisor = Convert.ToString(Session["SupervioserID"]);
                 BindDropdownItems();
+                BindDomain();
                 PopulateScientistsDropDown();
                 SetDivIDFromDatabase(scientID);
                 txtPropSubDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
             }
                 
 
+        }
+
+        private void BindDomain() 
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("SELECT Domain FROM [Domains]", con))
+                {
+                    con.Open();
+                    txtPropUnderDomain.DataSource = cmd.ExecuteReader();
+                    txtPropUnderDomain.DataTextField = "Domain";
+                    txtPropUnderDomain.DataValueField = "Domain";
+                    txtPropUnderDomain.DataBind();
+                    con.Close();
+                }
+            }
         }
 
         private void BindDropdownItems()

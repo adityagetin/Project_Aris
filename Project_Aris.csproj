@@ -138,6 +138,7 @@
     <Content Include="PMEControls\ProjProposalApprovalProcess.aspx" />
     <Content Include="PMEControls\Review.aspx" />
     <Content Include="AdminControls\scientist_edit.aspx" />
+    <Content Include="Reports\AllReport.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -170,6 +171,7 @@
     <Content Include="Scripts\PageScript.js" />
     <Content Include="Style\Default.css" />
     <Content Include="Style\form.css" />
+    <Content Include="Style\report.css" />
     <Content Include="Style\style.css" />
     <Content Include="Style\table.css" />
     <Content Include="DivisionControls\SubmissionsTable.aspx" />
@@ -308,6 +310,13 @@
     </Compile>
     <Compile Include="AdminControls\scientist_edit.aspx.designer.cs">
       <DependentUpon>scientist_edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\AllReport.aspx.cs">
+      <DependentUpon>AllReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\AllReport.aspx.designer.cs">
+      <DependentUpon>AllReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
