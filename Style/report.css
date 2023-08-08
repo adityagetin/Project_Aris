@@ -16,36 +16,37 @@ body {
 .header {
     background-color: #333;
     color: #fff;
-    padding: 10px;
+    padding: 1px;
     text-align: center;
     font-family: sans-serif;
-}
-.selectios {
-    display: flow;
-    padding: 10px 10px 10px 10px;
-    margin: 10px 10px 10px 10px;
+    font-size: 20px;
 }
 
 /* Selector styles */
-.selectors {
+.selections {
     margin-top: 10px;
-    margin-bottom: 15px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    column-count: 4;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.selectors label {
-    flex-grow: 1;
-    margin-right: 10px;
+.selectors {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-.selectors select {
-    flex-grow: 2;
-    padding: 5px;
-    border-radius: 5px;
-}
+    .selectors label {
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .selectors select {
+        padding: 5px;
+        border-radius: 5px;
+        width: 100%; /* Make all dropdowns the same length */
+    }
 
 /* Button styles */
 #btnGenerateReport {
@@ -56,34 +57,39 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
+    transition: background-color 0.3s;
 }
 
-#btnGenerateReport:hover {
-    background-color: #45a049;
-}
+    #btnGenerateReport:hover {
+        background-color: #45a049;
+    }
 
 /* Data card styles */
 .Data_Cards {
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
 }
 
 .data-card {
-    flex-basis: calc(33.33% - 10px);
-    padding: 15px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f7f7f7;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px 10px;
 }
 
-.data-card h3 {
-    margin-top: 0;
-    font-size: 18px;
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-/* Additional styles */
-/* Add the additional CSS you provided here */
+th, td {
+    padding: 5px;
+    text-align: left;
+}
 
 /* Media queries for responsiveness */
 @media screen and (max-width: 768px) {
@@ -92,17 +98,32 @@ body {
         align-items: flex-start;
     }
 
-    .selectors label,
-    .selectors select {
-        width: 100%;
-        margin-bottom: 10px;
-    }
+        .selectors select {
+            margin-bottom: 10px;
+        }
 
     .data-card {
         flex-basis: calc(50% - 10px);
     }
 
-    /* Additional media query styles */
-    /* Add additional responsive styles here */
-}
+    /* Additional responsive styles */
+    .header {
+        font-size: 18px;
+    }
 
+    .selectors {
+        padding: 5px;
+        margin: 5px;
+    }
+
+        .selectors label {
+            margin-bottom: 5px;
+        }
+
+    .data-card {
+        padding: 5px;
+        grid-template-columns: 1fr;
+    }
+
+    /* Add more custom responsive styles if needed */
+}

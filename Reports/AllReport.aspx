@@ -6,6 +6,26 @@
 <head runat="server">
     <title>Reports</title>
     <link rel="stylesheet" type="text/css" href="../Style/report.css" />
+
+    <!-- Add JavaScript code -->
+    <script>
+        function resetDropdowns(selectedDropdown) {
+            var ddlScientist = document.getElementById('<%= ddlScientist.ClientID %>');
+            var ddlDivision = document.getElementById('<%= ddlDivision.ClientID %>');
+            var ddlDomain = document.getElementById('<%= ddlDomain.ClientID %>');
+
+            if (selectedDropdown === ddlScientist) {
+                ddlDivision.selectedIndex = 0;
+                ddlDomain.selectedIndex = -1;
+            } else if (selectedDropdown === ddlDivision) {
+                ddlScientist.selectedIndex = 0;
+                ddlDomain.selectedIndex = -1;
+            } else if (selectedDropdown === ddlDomain) {
+                ddlScientist.selectedIndex = 0;
+                ddlDivision.selectedIndex = 0;
+            }
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -14,22 +34,25 @@
                 <h2>Project Reports</h2>
             </div>
             <div class="selections">
-                    <div class="selectors">
+                <div class="selectors">
                     <label for="ddlScientist">Scientist</label>
-                    <asp:DropDownList runat="server" ID="ddlScientist"></asp:DropDownList>
-                    </div>
-                    <div class="selectors">
-                        <label for="ddlDivision">Division</label>
-                        <asp:DropDownList runat="server" ID="ddlDivision"></asp:DropDownList>
-                    </div>
-                    <div class="selectors">
-                        <label for="ddlDomain">Domain</label>
-                        <asp:DropDownList runat="server" ID="ddlDomain"></asp:DropDownList>
-                    </div>
-                    <div>
-                        <asp:Button runat="server" ID="btnGenerateReport" Text="Generate Report" OnClick="btnGenerateReport_Click" CssClass="update-button" />
-                    </div>
-             </div>
+                    <asp:DropDownList runat="server" ID="ddlScientist" onchange="resetDropdowns(this);" CssClass="ddl"></asp:DropDownList>
+                </div>
+                <div class="selectors">
+                    <label for="ddlDivision">Division</label>
+                    <asp:DropDownList runat="server" ID="ddlDivision" onchange="resetDropdowns(this);" CssClass="ddl"></asp:DropDownList>
+                </div>
+                <div class="selectors">
+                    <label for="ddlDomain">Domain</label>
+                    <asp:DropDownList runat="server" ID="ddlDomain" onchange="resetDropdowns(this);" CssClass="ddl"></asp:DropDownList>
+                </div>
+                <div class="selectors">
+                    <asp:Button runat="server" ID="btnGenerateReport" Text="Generate Report" OnClick="btnGenerateReport_Click" CssClass="update-button" />
+                </div>
+            </div>
+            <div>
+                <hr />
+            </div>
             <div class="Data_Cards" id="Data_Cards" runat="server">
             </div>
         </div>

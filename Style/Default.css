@@ -65,6 +65,9 @@ label {
     margin-bottom: 10px;
     margin-right: 8px;
 }
+.Btns {
+    margin-bottom: 10px;
+}
 
 .btn-login {
     width: 100%;
@@ -76,6 +79,7 @@ label {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-bottom: 10px;
 }
 
     .btn-login:hover {

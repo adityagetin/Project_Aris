@@ -24,6 +24,8 @@ namespace Project_Aris.Reports
 
         private void PopulateDropDownLists()
         {
+
+
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 
@@ -82,7 +84,7 @@ namespace Project_Aris.Reports
             }
         }
 
-        private void GetScientistReport(int scientistId)
+        private void GetScientistReport(int scientistId)            
         {
             string query = "SELECT PP.[ScientID], PP.[DivID], PP.[PropUnderDomain], PP.[PropType], " +
                 "PP.[PropTitle], PP.[PropSubAgency], PP.[PropSubDate], PP.[PropNature], PP.[PropSummary], " +
@@ -129,79 +131,79 @@ namespace Project_Aris.Reports
                             card.CssClass = "data-card";
 
                             Label titleLabel = new Label();
-                            titleLabel.Text = "Proposal Title: " + propTitle;
+                            titleLabel.Text = "<table> <tr> <th>Proposal Title: </th>" + "<td>" + propTitle + "</td></tr>";
                             card.Controls.Add(titleLabel);
 
                             Label PIDLabel = new Label();
-                            PIDLabel.Text = "Proposal ID: " + id;
+                            PIDLabel.Text = " <tr> <th>Proposal ID: </th> " + "<td>" + id + "</td></tr>";
                             card.Controls.Add(PIDLabel);
 
                             Label stLabel = new Label();
-                            stLabel.Text = "Scientist ID: " + scientist;
+                            stLabel.Text = "<tr><th>Scientist ID: " + "<td>" + scientist + "</td></tr>";
                             card.Controls.Add(stLabel);
 
                             Label DivLabel = new Label();
-                            DivLabel.Text = "Division: " + Div;
+                            DivLabel.Text = "<tr><th>Division: " + "<td>" + Div + "</td></tr>";
                             card.Controls.Add(DivLabel);
 
                             Label summaryLabel = new Label();
-                            summaryLabel.Text = "Summary: " + propSummary;
+                            summaryLabel.Text = "<tr><th>Summary: " + "<td>" + propSummary + "</td></tr>";
                             card.Controls.Add(summaryLabel);
 
                             Label typeLabel = new Label();
-                            typeLabel.Text = "Type: " + propType;
+                            typeLabel.Text = "<tr><th>Type: " + "<td>" + propType + "</td></tr>";
                             card.Controls.Add(typeLabel);
 
                             Label DomainLabel = new Label();
-                            DomainLabel.Text = "Domain: " + domain;
+                            DomainLabel.Text = "<tr><th>Domain: " + "<td>" + domain + "</td></tr>";
                             card.Controls.Add(DomainLabel);
 
                             Label subAgencyLabel = new Label();
-                            subAgencyLabel.Text = "Submitting Agency: " + propSubAgency;
+                            subAgencyLabel.Text = "<tr><th>Submitting Agency: " + "<td>" + propSubAgency + "</td></tr>";
                             card.Controls.Add(subAgencyLabel);
 
                             Label subDateLabel = new Label();
-                            subDateLabel.Text = "Submission Date: " + propSubDate;
+                            subDateLabel.Text = "<tr><th>Submission Date: " + "<td>" + propSubDate + "</td></tr>";
                             card.Controls.Add(subDateLabel);
 
                             Label natureLabel = new Label();
-                            natureLabel.Text = "Nature: " + propNature;
+                            natureLabel.Text = "<tr><th>Nature: " + "<td>" + propNature + "</td></tr>";
                             card.Controls.Add(natureLabel);
 
                             Label piLabel = new Label();
-                            piLabel.Text = "Principal Investigator: " + propPI;
+                            piLabel.Text = "<tr><th>Principal Investigator: " + "<td>" + propPI + "</td></tr>";
                             card.Controls.Add(piLabel);
 
                             Label coPIsLabel = new Label();
-                            coPIsLabel.Text = "Co-Principal Investigators: " + propCoPIs;
+                            coPIsLabel.Text = "<tr><th>Co-Principal Investigators: " + "<td>" + propCoPIs + "</td></tr>";
                             card.Controls.Add(coPIsLabel);
 
                             Label SdateLabel = new Label();
-                            SdateLabel.Text = "Start Date: " + sdate;
+                            SdateLabel.Text = "<tr><th>Start Date: " + "<td>" + sdate + "</td></tr>";
                             card.Controls.Add(SdateLabel);
 
                             Label CdateLabel = new Label();
-                            CdateLabel.Text = "Completion Date: " + Cdate;
+                            CdateLabel.Text = "<tr><th>Completion Date: " + "<td>" + Cdate + "</td></tr>";
                             card.Controls.Add(CdateLabel);
 
                             Label AtLabel = new Label();
-                            AtLabel.Text = "Approved Term: " + approvedTerm;
+                            AtLabel.Text = "<tr><th>Approved Term: " + "<td>" + approvedTerm + "</td></tr>";
                             card.Controls.Add(AtLabel);
 
                             Label AbLabel = new Label();
-                            AbLabel.Text = "Approved Budget: " + ApprovedBudget;
+                            AbLabel.Text = "<tr><th>Approved Budget: " + "<td>" + ApprovedBudget + "</td></tr>";
                             card.Controls.Add(AbLabel);
 
                             Label supervioserLabel = new Label();
-                            supervioserLabel.Text = "Supervisor: " + supervioser;
+                            supervioserLabel.Text = "<tr><th>Supervisor: " + "<td>" + supervioser + "</td></tr>";
                             card.Controls.Add(supervioserLabel);
 
                             Label AppLlabel = new Label();
-                            AppLlabel.Text = "Approval Letter: " + approvalletter;
+                            AppLlabel.Text = "<tr><th>Approval Letter: " + "<td>" + approvalletter + "</td></tr>";
                             card.Controls.Add(AppLlabel);
 
                             Label proplabel = new Label();
-                            proplabel.Text = "Approved Proposal Attachment: " + ApprovedProposalAttch;
+                            proplabel.Text = "<tr><th>Approved Proposal Attachment: " + "<td>" + ApprovedProposalAttch + "</td></tr></table>";
                             card.Controls.Add(proplabel);
 
                             Data_Cards.Controls.Add(card);
@@ -261,79 +263,79 @@ namespace Project_Aris.Reports
                             card.CssClass = "data-card";
 
                             Label titleLabel = new Label();
-                            titleLabel.Text = "Proposal Title: " + propTitle;
+                            titleLabel.Text = "<table> <tr> <th>Proposal Title: </th>" +"<td>"+ propTitle+ "</td></tr>";
                             card.Controls.Add(titleLabel);
 
                             Label PIDLabel = new Label();
-                            PIDLabel.Text = "Proposal ID: " + id;
+                            PIDLabel.Text = " <tr> <th>Proposal ID: </th> " + "<td>" + id + "</td></tr>";
                             card.Controls.Add(PIDLabel);
 
                             Label stLabel = new Label();
-                            stLabel.Text = "Scientist ID: " + scientist;
+                            stLabel.Text = "<tr><th>Scientist ID: " + "<td>" + scientist + "</td></tr>";
                             card.Controls.Add(stLabel);
 
                             Label DivLabel = new Label();
-                            DivLabel.Text = "Division: " + Div;
+                            DivLabel.Text = "<tr><th>Division: " + "<td>" + Div + "</td></tr>";
                             card.Controls.Add(DivLabel);
 
                             Label summaryLabel = new Label();
-                            summaryLabel.Text = "Summary: " + propSummary;
+                            summaryLabel.Text = "<tr><th>Summary: " + "<td>" + propSummary + "</td></tr>";
                             card.Controls.Add(summaryLabel);
 
                             Label typeLabel = new Label();
-                            typeLabel.Text = "Type: " + propType;
+                            typeLabel.Text = "<tr><th>Type: " + "<td>" + propType + "</td></tr>";
                             card.Controls.Add(typeLabel);
 
                             Label DomainLabel = new Label();
-                            DomainLabel.Text = "Domain: " + domain;
+                            DomainLabel.Text = "<tr><th>Domain: " + "<td>" + domain + "</td></tr>";       
                             card.Controls.Add(DomainLabel);
 
                             Label subAgencyLabel = new Label();
-                            subAgencyLabel.Text = "Submitting Agency: " + propSubAgency;
+                            subAgencyLabel.Text = "<tr><th>Submitting Agency: " + "<td>" + propSubAgency + "</td></tr>";
                             card.Controls.Add(subAgencyLabel);
 
                             Label subDateLabel = new Label();
-                            subDateLabel.Text = "Submission Date: " + propSubDate;
+                            subDateLabel.Text = "<tr><th>Submission Date: " + "<td>" + propSubDate + "</td></tr>";
                             card.Controls.Add(subDateLabel);
 
                             Label natureLabel = new Label();
-                            natureLabel.Text = "Nature: " + propNature;
+                            natureLabel.Text = "<tr><th>Nature: " + "<td>" + propNature + "</td></tr>";
                             card.Controls.Add(natureLabel);
 
                             Label piLabel = new Label();
-                            piLabel.Text = "Principal Investigator: " + propPI;
+                            piLabel.Text = "<tr><th>Principal Investigator: " + "<td>" + propPI + "</td></tr>";
                             card.Controls.Add(piLabel);
 
                             Label coPIsLabel = new Label();
-                            coPIsLabel.Text = "Co-Principal Investigators: " + propCoPIs;
+                            coPIsLabel.Text = "<tr><th>Co-Principal Investigators: " + "<td>" + propCoPIs + "</td></tr>";
                             card.Controls.Add(coPIsLabel);
 
                             Label SdateLabel = new Label();
-                            SdateLabel.Text = "Start Date: " + sdate;
+                            SdateLabel.Text = "<tr><th>Start Date: " + "<td>" + sdate + "</td></tr>";
                             card.Controls.Add(SdateLabel);
 
                             Label CdateLabel = new Label();
-                            CdateLabel.Text = "Completion Date: " + Cdate;
+                            CdateLabel.Text = "<tr><th>Completion Date: " + "<td>" + Cdate + "</td></tr>";
                             card.Controls.Add(CdateLabel);
 
                             Label AtLabel = new Label();
-                            AtLabel.Text = "Approved Term: " + approvedTerm;
+                            AtLabel.Text = "<tr><th>Approved Term: " + "<td>" + approvedTerm + "</td></tr>";
                             card.Controls.Add(AtLabel);
 
                             Label AbLabel = new Label();
-                            AbLabel.Text = "Approved Budget: " + ApprovedBudget;
+                            AbLabel.Text = "<tr><th>Approved Budget: " + "<td>" + ApprovedBudget + "</td></tr>";
                             card.Controls.Add(AbLabel);
 
                             Label supervioserLabel = new Label();
-                            supervioserLabel.Text = "Supervisor: " + supervioser;
+                            supervioserLabel.Text = "<tr><th>Supervisor: " + "<td>" + supervioser + "</td></tr>";
                             card.Controls.Add(supervioserLabel);
 
                             Label AppLlabel = new Label();
-                            AppLlabel.Text = "Approval Letter: " + approvalletter;
+                            AppLlabel.Text = "<tr><th>Approval Letter: " + "<td>" + approvalletter + "</td></tr>";
                             card.Controls.Add(AppLlabel);
 
                             Label proplabel = new Label();
-                            proplabel.Text = "Approved Proposal Attachment: " + ApprovedProposalAttch;
+                            proplabel.Text = "<tr><th>Approved Proposal Attachment: " + "<td>" + ApprovedProposalAttch + "</td></tr></table>";
                             card.Controls.Add(proplabel);
 
                             Data_Cards.Controls.Add(card);
@@ -394,79 +396,79 @@ namespace Project_Aris.Reports
                             card.CssClass = "data-card";
 
                             Label titleLabel = new Label();
-                            titleLabel.Text = "Proposal Title: " + propTitle;
+                            titleLabel.Text = "<table> <tr> <th>Proposal Title: </th>" + "<td>" + propTitle + "</td></tr>";
                             card.Controls.Add(titleLabel);
 
                             Label PIDLabel = new Label();
-                            PIDLabel.Text = "Proposal ID: " + id;
+                            PIDLabel.Text = " <tr> <th>Proposal ID: </th> " + "<td>" + id + "</td></tr>";
                             card.Controls.Add(PIDLabel);
 
                             Label stLabel = new Label();
-                            stLabel.Text = "Scientist ID: " + scientist;
+                            stLabel.Text = "<tr><th>Scientist ID: " + "<td>" + scientist + "</td></tr>";
                             card.Controls.Add(stLabel);
 
                             Label DivLabel = new Label();
-                            DivLabel.Text = "Division: " + Div;
+                            DivLabel.Text = "<tr><th>Division: " + "<td>" + Div + "</td></tr>";
                             card.Controls.Add(DivLabel);
 
                             Label summaryLabel = new Label();
-                            summaryLabel.Text = "Summary: " + propSummary;
+                            summaryLabel.Text = "<tr><th>Summary: " + "<td>" + propSummary + "</td></tr>";
                             card.Controls.Add(summaryLabel);
 
                             Label typeLabel = new Label();
-                            typeLabel.Text = "Type: " + propType;
+                            typeLabel.Text = "<tr><th>Type: " + "<td>" + propType + "</td></tr>";
                             card.Controls.Add(typeLabel);
 
                             Label DomainLabel = new Label();
-                            DomainLabel.Text = "Domain: " + domains;
+                            DomainLabel.Text = "<tr><th>Domain: " + "<td>" + domain + "</td></tr>";
                             card.Controls.Add(DomainLabel);
 
                             Label subAgencyLabel = new Label();
-                            subAgencyLabel.Text = "Submitting Agency: " + propSubAgency;
+                            subAgencyLabel.Text = "<tr><th>Submitting Agency: " + "<td>" + propSubAgency + "</td></tr>";
                             card.Controls.Add(subAgencyLabel);
 
                             Label subDateLabel = new Label();
-                            subDateLabel.Text = "Submission Date: " + propSubDate;
+                            subDateLabel.Text = "<tr><th>Submission Date: " + "<td>" + propSubDate + "</td></tr>";
                             card.Controls.Add(subDateLabel);
 
                             Label natureLabel = new Label();
-                            natureLabel.Text = "Nature: " + propNature;
+                            natureLabel.Text = "<tr><th>Nature: " + "<td>" + propNature + "</td></tr>";
                             card.Controls.Add(natureLabel);
 
                             Label piLabel = new Label();
-                            piLabel.Text = "Principal Investigator: " + propPI;
+                            piLabel.Text = "<tr><th>Principal Investigator: " + "<td>" + propPI + "</td></tr>";
                             card.Controls.Add(piLabel);
 
                             Label coPIsLabel = new Label();
-                            coPIsLabel.Text = "Co-Principal Investigators: " + propCoPIs;
+                            coPIsLabel.Text = "<tr><th>Co-Principal Investigators: " + "<td>" + propCoPIs + "</td></tr>";
                             card.Controls.Add(coPIsLabel);
 
                             Label SdateLabel = new Label();
-                            SdateLabel.Text = "Start Date: " + sdate;
+                            SdateLabel.Text = "<tr><th>Start Date: " + "<td>" + sdate + "</td></tr>";
                             card.Controls.Add(SdateLabel);
 
                             Label CdateLabel = new Label();
-                            CdateLabel.Text = "Completion Date: " + Cdate;
+                            CdateLabel.Text = "<tr><th>Completion Date: " + "<td>" + Cdate + "</td></tr>";
                             card.Controls.Add(CdateLabel);
 
                             Label AtLabel = new Label();
-                            AtLabel.Text = "Approved Term: " + approvedTerm;
+                            AtLabel.Text = "<tr><th>Approved Term: " + "<td>" + approvedTerm + "</td></tr>";
                             card.Controls.Add(AtLabel);
 
                             Label AbLabel = new Label();
-                            AbLabel.Text = "Approved Budget: " + ApprovedBudget;
+                            AbLabel.Text = "<tr><th>Approved Budget: " + "<td>" + ApprovedBudget + "</td></tr>";
                             card.Controls.Add(AbLabel);
 
                             Label supervioserLabel = new Label();
-                            supervioserLabel.Text = "Supervisor: " + supervioser;
+                            supervioserLabel.Text = "<tr><th>Supervisor: " + "<td>" + supervioser + "</td></tr>";
                             card.Controls.Add(supervioserLabel);
 
                             Label AppLlabel = new Label();
-                            AppLlabel.Text = "Approval Letter: " + approvalletter;
+                            AppLlabel.Text = "<tr><th>Approval Letter: " + "<td>" + approvalletter + "</td></tr>";
                             card.Controls.Add(AppLlabel);
 
                             Label proplabel = new Label();
-                            proplabel.Text = "Approved Proposal Attachment: " + ApprovedProposalAttch;
+                            proplabel.Text = "<tr><th>Approved Proposal Attachment: " + "<td>" + ApprovedProposalAttch + "</td></tr></table>";
                             card.Controls.Add(proplabel);
 
                             Data_Cards.Controls.Add(card);

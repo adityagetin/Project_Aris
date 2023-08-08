@@ -205,6 +205,10 @@ namespace Project_Aris
             }
         }
 
+        protected void Report_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("\\Reports\\AllReport.aspx");
+        }
     }
 
 

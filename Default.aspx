@@ -22,8 +22,14 @@
                 <asp:Label ID="lblPassword" runat="server" Text="Password:" AssociatedControlID="Login_Pass"></asp:Label>
                 <asp:TextBox ID="Login_Pass" runat="server" TextMode="Password" CssClass="input"></asp:TextBox>
             </div>
-            <div>
+            <div class="Btns">
                 <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="Login" CssClass="btn-login" />
+            </div>
+            <div>
+                <br />
+            </div>
+            <div class="Btns">
+                <asp:Button ID="Report" runat="server" Text="Reports"  CssClass="btn-login" OnClick="Report_Click" />
             </div>
             <div class="error-message">
                 <asp:Label ID="error" runat="server" EnableViewState="False"></asp:Label>
