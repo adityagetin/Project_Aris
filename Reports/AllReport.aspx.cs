@@ -70,11 +70,11 @@ namespace Project_Aris.Reports
             
             Data_Cards.Controls.Clear();
 
-            if (selectedScientistId > 0)
+            if (selectedScientistId!= -1)
             {
                 GetScientistReport(selectedScientistId);
             }
-            else if (selectedDivisionId > 0)
+            else if (selectedDivisionId != -1)
             {
                 GetDivisionReport(selectedDivisionId);
             }
@@ -199,11 +199,11 @@ namespace Project_Aris.Reports
                             card.Controls.Add(supervioserLabel);
 
                             Label AppLlabel = new Label();
-                            AppLlabel.Text = "<tr><th>Approval Letter: " + "<td>" + approvalletter + "</td></tr>";
+                            AppLlabel.Text = "<tr><th>Approval Letter:</th><td><a target=\"_blank\" href=\"" + approvalletter + "\">View</a></td></tr>";
                             card.Controls.Add(AppLlabel);
 
                             Label proplabel = new Label();
-                            proplabel.Text = "<tr><th>Approved Proposal Attachment: " + "<td>" + ApprovedProposalAttch + "</td></tr></table>";
+                            proplabel.Text = "<tr><th>Approved Proposal Attchment :</th><td><a target=\"_blank\" href=\"" + ApprovedProposalAttch + "\">View</a></td></tr>";
                             card.Controls.Add(proplabel);
 
                             Data_Cards.Controls.Add(card);

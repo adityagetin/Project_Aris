@@ -10,8 +10,8 @@ namespace Project_Aris
     {
         string connectionString = "Data Source=ADITYA-PAL\\SQLEXPRESS;Initial Catalog=Project_Aris;Integrated Security=True;";
 
-        int scientID = 0;
-        string Supervisor ="" ;
+        int scientID;
+        string Supervisor;
         string selectedItems = string.Empty;
         string selectedValues= string.Empty;
         protected void Page_Load(object sender, EventArgs e)
@@ -19,7 +19,9 @@ namespace Project_Aris
             if (!IsPostBack) {
                 
                 scientID = Convert.ToInt32(Session["ID"]);
+
                 Supervisor = Convert.ToString(Session["SupervioserID"]);
+
                 BindDropdownItems();
                 BindDomain();
                 PopulateScientistsDropDown();
@@ -205,8 +207,6 @@ namespace Project_Aris
 
         private void ClearFormFields()
         {
-            txtDivID.Text = string.Empty;
-            txtPropUnderDomain.Text = string.Empty;
 
             // Clear values of other form fields
         }

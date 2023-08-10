@@ -13,11 +13,11 @@
             <h3>HELLO! <asp:Label runat="server" ID="name"></asp:Label></h3>
         </div>
         <div class="options">
-            <a href="#" onclick="loadPage(Proposals)">
+            <a href="#" onclick="loadPage('Proposals')">
                 View Proposals
             </a>
 
-            <a href="#" onclick ="loadPage('Table')">
+            <a href="#" onclick ="loadPage('Submissions')">
                 View Submissions
             </a>
             
@@ -27,11 +27,14 @@
         </div>
     </div>
     <div id="pageContainer">
-        <div id ="Table" class="page">
-            <iframe src="SubmissionsTable.aspx" frameborder="0"></iframe>
-        </div>
+       
         <div id="Proposals" class="page">
-            <iframe src="ProjProposalSubmission.aspx" frameborder="0"></iframe>
+            
+            <iframe src="../DivisionControls/ProjProposalSubmission.aspx" frameborder="0"></iframe>
+        </div>
+
+         <div id ="Submissions" class="page">
+            <iframe src="SubmissionsTable.aspx" frameborder="0"></iframe>
         </div>
     </div>
     <script src="../Scripts/PageScript.js"></script>

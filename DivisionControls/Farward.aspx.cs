@@ -54,6 +54,8 @@ namespace Project_Aris.DivisionControls
             Insert_From(PropID, action, forwardTo, forwardFrom,Date,comment);
             Update_supervioserID(PropID,forwardTo);
 
+            Response.Redirect("SubmissionTable.aspx");
+
         }
 
         private void Insert_From(int PropID,string action, int forwardTo,int forwardFrom,string Date,string comment)

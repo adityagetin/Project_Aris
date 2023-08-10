@@ -142,13 +142,22 @@ namespace Project_Aris
                                     {
                                         if (scientistIdsArray.Contains(storedUserID))
                                         {
+                                            Session["SupervioserID"] = supervisor;
+                                            Session["ID"] = storedUserID;
+                                            Session["Name"] = firstName;
                                             Response.Redirect("\\DivisionControls\\DivisionHome.aspx");
                                         }
                                         else if (JDR.Contains(storedUserID))
                                         {
+                                            Session["SupervioserID"] = supervisor;
+                                            Session["ID"] = storedUserID;
+                                            Session["Name"] = firstName;
                                             Response.Redirect("\\PMEControls\\PMEHome.aspx");
                                         }
                                         else {
+                                            Session["SupervioserID"] = supervisor;
+                                            Session["ID"] = storedUserID;
+                                            Session["Name"] = firstName;
                                             Response.Redirect("\\OnlyScientistControls\\ScvientistHome.aspx");
                                             
                                         }

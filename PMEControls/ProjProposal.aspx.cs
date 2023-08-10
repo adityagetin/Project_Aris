@@ -30,12 +30,11 @@ namespace Project_Aris
             string connectionString = "Data Source=ADITYA-PAL\\SQLEXPRESS;Initial Catalog=Project_Aris;Integrated Security=True;";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT p.* FROM ProjProposal p INNER JOIN ProjProposalApprovalProcess app ON p.ProposalID = app.ProposalID;";
+                string query = "SELECT p.* FROM ProjProposal p INNER JOIN ProjProposalApprovalProcess app ON p.ProposalID = app.SubmissionID;";
                 SqlCommand command = new SqlCommand(query, connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
-
                 rptProposals.DataSource = dataTable;
                 rptProposals.DataBind();
             }
@@ -43,10 +42,16 @@ namespace Project_Aris
 
         protected void rptProposals_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            // Handle any specific command events for each proposal if needed
+            if (e.CommandName == "Review") 
+            {
+                string values = e.CommandArgument.ToString();
+                Session["Pid"] = values;
+                Response.Redirect("Review.aspx");
+            }
+
         }
 
-        
-    
-}
+
+
+    }
 }

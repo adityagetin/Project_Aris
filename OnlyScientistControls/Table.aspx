@@ -7,7 +7,9 @@
     <link href="../Style/table.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <h3>Project Proposals </h3>
+    <h2>Project Proposals </h2>
+    <br />
+    
     <form id="formTable" runat="server">
        <div>
         <table>

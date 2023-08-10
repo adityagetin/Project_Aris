@@ -15,14 +15,14 @@
             var ddlDomain = document.getElementById('<%= ddlDomain.ClientID %>');
 
             if (selectedDropdown === ddlScientist) {
-                ddlDivision.selectedIndex = 0;
+                ddlDivision.selectedIndex = -1;
                 ddlDomain.selectedIndex = -1;
             } else if (selectedDropdown === ddlDivision) {
-                ddlScientist.selectedIndex = 0;
+                ddlScientist.selectedIndex = -1;
                 ddlDomain.selectedIndex = -1;
             } else if (selectedDropdown === ddlDomain) {
-                ddlScientist.selectedIndex = 0;
-                ddlDivision.selectedIndex = 0;
+                ddlScientist.selectedIndex = -1;
+                ddlDivision.selectedIndex = -1;
             }
         }
     </script>

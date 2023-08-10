@@ -7,9 +7,8 @@
     <link href="../Style/table.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <h3>Project Proposals </h3>
+    <h2>Project Proposals </h2>
     <form id="formTable" runat="server">
-       <div>
         <table>
             <tr>
                 <th>Proposal ID</th>
@@ -31,7 +30,7 @@
                 <th>Action</th>
 
             </tr>
-            <asp:Repeater ID="rptProposals" runat="server" OnItemDataBound="rptProposals_ItemDataBound">
+            <asp:Repeater ID="rptProposals" runat="server" OnItemCommand="rptSubmissions_ItemCommand">
                 <ItemTemplate>
                     <tr>
                         <td><%# Eval("ProposalID") %></td>
@@ -47,31 +46,23 @@
                         <td><%# Eval("PropNature") %></td>
                         <td><%# Eval("PropSummary") %></td>
                         <td><%# Eval("PropFundEstimate") %></td>
-                        <td>
-                            <asp:Label ID="lblPresentStatus" runat="server" Text='<%# Eval("PropPresentStatus") %>'></asp:Label>
-                        </td>
+                        <td><asp:Label ID="lblPresentStatus" runat="server" Text='<%# Eval("PropPresentStatus") %>'></asp:Label></td>
                         <td><%# Eval("PropPI") %></td>
                         <td><%# Eval("PropCoPIs") %></td>
                         <td><%#Eval("SupervisoerID") %></td>
+                        <td><a href='<%# Eval("PropAttachment") %>' target="_blank" id ="Attach">View Attachment</a></td>
                         <td>
-                            <a href='<%# Eval("PropAttachment") %>' target="_blank" id ="Attach">View Attachment</a>
-                        </td>
-                        <td>
-                            <td>
                             <asp:DropDownList ID="DropDownList1" runat="server" CssClass="status-field">
                                 <asp:ListItem Text="Pending" Value="Pending"></asp:ListItem>
                                 <asp:ListItem Text="Approved" Value="Approved"></asp:ListItem>
                                 <asp:ListItem Text="Rejected" Value="Rejected"></asp:ListItem>
                             </asp:DropDownList>
-                            <asp:Button ID="btnUpdate" runat="server" Text="Update" CssClass="update-button" CommandName="UpdateSubmission" CommandArgument='<%# Eval("ProposalID") + "," + Eval("ScientID") + "," + Eval("SupervisorID") %>' />
-                        </td>
+                            <asp:Button ID="btnUpdate" runat="server" Text="Update" CssClass="update-button" CommandName="UpdateSubmission" CommandArgument='<%# Eval("ProposalID") + "," + Eval("ScientID") + "," + Eval("[SupervisoerID]") %>' />
                         </td>
                     </tr>
                 </ItemTemplate>
             </asp:Repeater>
             </table>
-       </div>
-        
     </form>
 </body>
 </html>

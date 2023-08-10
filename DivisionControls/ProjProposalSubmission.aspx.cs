@@ -13,7 +13,6 @@ namespace Project_Aris.DivisionControls
     public partial class ProjProposalSubmission : System.Web.UI.Page
     {
         string connectionString = "Data Source=ADITYA-PAL\\SQLEXPRESS;Initial Catalog=Project_Aris;Integrated Security=True;";
-        int scientistID = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -24,12 +23,13 @@ namespace Project_Aris.DivisionControls
 
         protected void BindProposalData()
         {
+
             string ID = Session["ID"].ToString();
 
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "SELECT * FROM ProjProposal  WHERE ScientID = @Sid";
+                string query = "SELECT * FROM [ProjProposal]  WHERE [SupervisoerID] = @Sid";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Sid", ID);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -50,6 +50,7 @@ namespace Project_Aris.DivisionControls
                 string proposalID = values[0];
                 string scientID = values[1];
                 string supervisorID = values[2];
+
 
                 if (newStatus == "Approved") { 
                     InsertSubmission(proposalID, scientID,supervisorID);
@@ -73,7 +74,9 @@ namespace Project_Aris.DivisionControls
                     command.Parameters.AddWithValue("@ID", proposalID);
                     connection.Open();
                     command.ExecuteNonQuery();
+
                 }
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showAlert", $"alert('{newStatus}');", true);
             }
             catch (Exception ex)
             {
@@ -84,17 +87,41 @@ namespace Project_Aris.DivisionControls
             }
         }
 
-        protected void InsertSubmission(string proposalID, string scientID, string supervioserID) { 
+        protected void InsertSubmission(string proposalID, string scientID, string supervioserID) {
 
-            string status = "Approved by:"+supervioserID+"";
-            string date = DateTime.Now.ToString();
-            using(SqlConnection connection = new SqlConnection(connectionString)) 
+
+            try
             {
-                string query = "INSERT INTO [ProjProposalSubmission] ([ProposalID],[ScientID],[SupervisorID],[SubmissionStatus],[SubmissionDate],[Comment]) VALUES (" + proposalID + "," + scientID + "," + supervioserID + "," + status + "," + date + "," + status + ") ";
-                SqlCommand cmd = new SqlCommand(query, connection);
-                connection.Open();
-                cmd.ExecuteNonQuery();
+                string status = "Approved_by_the_" + supervioserID;
+                string date = DateTime.Now.ToString();
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "INSERT INTO [ProjProposalSubmission] ([SubmissionID],[ProposalID],[ScientID],[SupervisorID],[SubmissionStatus],[SubmissionDate],[Comment]) " +
+                        "VALUES (@SubmissionID,@ProposalID,@ScientID,@SupervisorID,@SubmissionStatus,@SubmissionDate,@Comment)";
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@SubmissionID", proposalID);
+                    cmd.Parameters.AddWithValue("@ProposalID", proposalID);
+                    cmd.Parameters.AddWithValue("@ScientID", scientID);
+                    cmd.Parameters.AddWithValue("@SupervisorID", supervioserID);
+                    cmd.Parameters.AddWithValue("@SubmissionStatus", status);
+                    cmd.Parameters.AddWithValue("@SubmissionDate", date);
+                    cmd.Parameters.AddWithValue("@Comment", status);
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showAlert", $"alert('Proposal Submitted Sucessfully');", true);
+                }
+
             }
+            catch (Exception ex)
+            {
+                string error = ex.Data.ToString();
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showAlert", $"alert('{error}');", true);
+                Thread.Sleep(10000);
+                Response.Redirect("Default.aspx");
+            }
+
+            
 
         }
 

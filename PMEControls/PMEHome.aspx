@@ -13,7 +13,10 @@
             <h3>HELLO! <asp:Label runat="server" ID="name"></asp:Label></h3>
         </div>
         <div class="options">
-            <a href="#" onclick ="loadpage('Approve')">
+            <a href="#" onclick ="loadPage('Submission')">
+                Forwarded
+            </a>
+            <a href="#" onclick ="loadPage('Approve')">
                 Approval
             </a>
             <a href="../Default.aspx">
@@ -22,6 +25,9 @@
         </div>
     </div>
     <div id="pageContainer">
+        <div id ="Submission" class="page">
+            <iframe src="ProjProposal.aspx" frameborder="0"></iframe>
+        </div>
         <div id ="Approve" class="page">
             <iframe src="ProjProposalApprovalProcess.aspx" frameborder="0"></iframe>
         </div>

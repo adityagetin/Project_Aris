@@ -33,23 +33,23 @@
                 <asp:Repeater ID="rptProposals" runat="server" OnItemCommand="rptProposals_ItemCommand">
                     <ItemTemplate>
                         <tr>
-                            <td><%# Eval("p.ProposalID") %></td>
-                            <td><%# Eval("p.ScientID") %></td>
-                            <td><%# Eval("p.DivID") %></td>
-                            <td><%# Eval("p.PropUnderDomain") %></td>
-                            <td><%# Eval("p.PropType") %></td>
-                            <td><%# Eval("p.PropTitle") %></td>
-                            <td><%# Eval("p.PropSubAgency") %></td>
-                            <td><%# Eval("p.PropSubDate", "{0:dd/MM/yyyy}") %></td>
-                            <td><%# Eval("p.PropNature") %></td>
-                            <td><%# Eval("p.PropSummary") %></td>
-                            <td><%# Eval("p.PropFundEstimate", "{0:C2}") %></td>
-                            <td><%# Eval("p.PropPresentStatus") %></td>
-                            <td><%# Eval("p.PropPI") %></td>
-                            <td><%# Eval("p.PropCoPIs") %></td>
-                            <td><a href='<%# Eval("p.PropAttachment") %>' target="_blank" id="Attach">View Attachment</a></td>
+                            <td><%# Eval("ProposalID") %></td>
+                            <td><%# Eval("ScientID") %></td>
+                            <td><%# Eval("DivID") %></td>
+                            <td><%# Eval("PropUnderDomain") %></td>
+                            <td><%# Eval("PropType") %></td>
+                            <td><%# Eval("PropTitle") %></td>
+                            <td><%# Eval("PropSubAgency") %></td>
+                            <td><%# Eval("PropSubDate", "{0:dd/MM/yyyy}") %></td>
+                            <td><%# Eval("PropNature") %></td>
+                            <td><%# Eval("PropSummary") %></td>
+                            <td><%# Eval("PropFundEstimate", "{0:C2}") %></td>
+                            <td><%# Eval("PropPresentStatus") %></td>
+                            <td><%# Eval("PropPI") %></td>
+                            <td><%# Eval("PropCoPIs") %></td>
+                            <td><a href='<%# Eval("PropAttachment") %>' target="_blank" id="Attach">View Attachment</a></td>
                             <td>
-                                <asp:Button runat="server"  ID="Review" Text="Review" CssClass="update-button" CommandName="Review" CommandArgument='<%# Eval("p.ProposalID") %>' target="_blank" />
+                                <asp:Button runat="server"  ID="Review" Text="Review" CssClass="update-button" CommandName="Review" CommandArgument='<%# Eval("ProposalID") %>' target="_blank" />
 
                             </td>
                         </tr>
