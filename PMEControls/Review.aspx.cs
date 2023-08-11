@@ -39,7 +39,7 @@ namespace Project_Aris
                 fileData = SaveAttachment(fileUpload);
             }
 
-            string connectionString = ConfigurationManager.ConnectionStrings["connectionstr"].ConnectionString; 
+            string connectionString = "Data Source=ADITYA-PAL\\SQLEXPRESS;Initial Catalog=Project_Aris;Integrated Security=True;";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {

@@ -8,7 +8,7 @@ namespace Project_Aris.DivisionControls
 {
     public partial class Farward : System.Web.UI.Page
     {
-        string connectionString = ConfigurationManager.ConnectionStrings["connectionstr"].ConnectionString;
+        string connectionString = "Data Source=ADITYA-PAL\\SQLEXPRESS;Initial Catalog=Project_Aris;Integrated Security=True;";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
