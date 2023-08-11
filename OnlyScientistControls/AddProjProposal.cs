@@ -154,6 +154,7 @@ namespace Project_Aris
             {
                 propAttachment = SaveAttachment(fileAttachment);
             }
+
             string suervioser = Supervisor;
 
             // Insert the data into the ProjProposal table
