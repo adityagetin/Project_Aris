@@ -25,8 +25,8 @@
                 <th>Present Status</th>
                 <th>PI</th>
                 <th>Co-PIs</th>
-                <th>Attachment</th>
                 <th>SupervisoerID</th>
+                <th>Attachment</th>
                 <th>Action</th>
 
             </tr>

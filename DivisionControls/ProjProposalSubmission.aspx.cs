@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
+using System.Data.SqlClient;
 using System.Web.UI.WebControls;
-using System.Threading;
 
 namespace Project_Aris.DivisionControls
 {
@@ -23,10 +18,8 @@ namespace Project_Aris.DivisionControls
 
         protected void BindProposalData()
         {
-
+            Console.WriteLine("binding proposal");
             string ID = Session["ID"].ToString();
-
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "SELECT * FROM [ProjProposal]  WHERE [SupervisoerID] = @Sid";
@@ -42,6 +35,7 @@ namespace Project_Aris.DivisionControls
 
         protected void rptSubmissions_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
+            Console.WriteLine("button clicked");
             if (e.CommandName == "UpdateSubmission")
             {
                 string[] values = e.CommandArgument.ToString().Split(',');
@@ -51,54 +45,65 @@ namespace Project_Aris.DivisionControls
                 string scientID = values[1];
                 string supervisorID = values[2];
 
+                try 
+                {
+                    if (newStatus == "Approved")
+                    {
 
-                if (newStatus == "Approved") { 
-                    InsertSubmission(proposalID, scientID,supervisorID);
+                        InsertSubmission(proposalID, scientID, supervisorID);
+                        Console.WriteLine("hello1");
+                    }
+
+                    
                 }
-
-                UpdateStatus(proposalID, newStatus);
+                catch(Exception ex) 
+                {
+                    string error = ex.Message;
+                    Console.WriteLine(error);
+                }
+                finally 
+                {
+                    UpdateStatus(proposalID, newStatus);
+                }
                 BindProposalData();
             }
         }
 
         protected void UpdateStatus(string proposalID, string newStatus)
         {
+            Console.WriteLine("update called");
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "UPDATE ProjProposal SET SubmissionStatus = @SubmissionStatus WHERE [ProposalID] = @ID";
-
+                    string query = "UPDATE [ProjProposal] SET [SubmissionStatus] = @SubmissionStatus WHERE [ProposalID] = @ID";
                     SqlCommand command = new SqlCommand(query, connection);
+                    command.Connection.Open();
                     command.Parameters.AddWithValue("@SubmissionStatus", newStatus);
                     command.Parameters.AddWithValue("@ID", proposalID);
-                    connection.Open();
                     command.ExecuteNonQuery();
-
                 }
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showAlert", $"alert('{newStatus}');", true);
             }
             catch (Exception ex)
             {
-                string error = ex.Data.ToString();
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showAlert", $"alert('{error}');", true);
-                Thread.Sleep(10000);
-                Response.Redirect("Default.aspx");
+                string error = ex.Message;
+                Console.WriteLine( error);
             }
         }
 
-        protected void InsertSubmission(string proposalID, string scientID, string supervioserID) {
-
-
+        protected void InsertSubmission(string proposalID, string scientID, string supervioserID)
+        {
             try
             {
                 string status = "Approved_by_the_" + supervioserID;
                 string date = DateTime.Now.ToString();
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "INSERT INTO [ProjProposalSubmission] ([SubmissionID],[ProposalID],[ScientID],[SupervisorID],[SubmissionStatus],[SubmissionDate],[Comment]) " +
+                    string query = "INSERT INTO [ProjProposalSubmission] ([SubmissionID],[ProposalID],[ScientID],[SupervisorID]," +
+                        "[SubmissionStatus],[SubmissionDate],[Comment]) " +
                         "VALUES (@SubmissionID,@ProposalID,@ScientID,@SupervisorID,@SubmissionStatus,@SubmissionDate,@Comment)";
                     SqlCommand cmd = new SqlCommand(query, connection);
+                    cmd.Connection.Open();
                     cmd.Parameters.AddWithValue("@SubmissionID", proposalID);
                     cmd.Parameters.AddWithValue("@ProposalID", proposalID);
                     cmd.Parameters.AddWithValue("@ScientID", scientID);
@@ -106,23 +111,15 @@ namespace Project_Aris.DivisionControls
                     cmd.Parameters.AddWithValue("@SubmissionStatus", status);
                     cmd.Parameters.AddWithValue("@SubmissionDate", date);
                     cmd.Parameters.AddWithValue("@Comment", status);
-                    connection.Open();
+                    cmd.Connection.Open();
                     cmd.ExecuteNonQuery();
-
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showAlert", $"alert('Proposal Submitted Sucessfully');", true);
                 }
-
             }
             catch (Exception ex)
             {
-                string error = ex.Data.ToString();
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showAlert", $"alert('{error}');", true);
-                Thread.Sleep(10000);
-                Response.Redirect("Default.aspx");
+                string error = ex.Message;
+                Console.WriteLine("eRROR2 : " + error);
             }
-
-            
-
         }
 
     }

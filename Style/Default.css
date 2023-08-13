@@ -1,20 +1,17 @@
-﻿html, body {
+﻿/* Font Definitions */
+html, body {
     height: 100%;
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Background Styles */
 .bg {
-    position: relative;
-    z-index: -1;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-image: radial-gradient(circle at 30% 86%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 8%, transparent 8%, transparent 92%), radial-gradient(circle at 55% 100%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 8%, transparent 8%, transparent 92%), radial-gradient(circle at 40% 75%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 6%, transparent 6%, transparent 94%), radial-gradient(circle at 7% 99%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 6%, transparent 6%, transparent 94%), radial-gradient(circle at 69% 76%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 6%, transparent 6%, transparent 94%), radial-gradient(circle at 2% 35%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 6%, transparent 6%, transparent 94%), radial-gradient(circle at 14% 48%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 6%, transparent 6%, transparent 94%), radial-gradient(circle at 28% 87%, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.04) 4%, transparent 4%, transparent 96%), radial-gradient(circle at 65% 14%, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.04) 4%, transparent 4%, transparent 96%), radial-gradient(circle at 51% 36%, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.04) 4%, transparent 4%, transparent 96%), radial-gradient(circle at 6% 93%, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.04) 4%, transparent 4%, transparent 96%), linear-gradient(135deg, #17e9ad, #1d18d0);
+    background-color: white;
 }
 
+/* Body Styles */
 body {
     display: grid;
     place-items: center;
@@ -23,6 +20,7 @@ body {
     background-color: #f5f5f5;
 }
 
+/* Card Styles */
 .card {
     width: 90%;
     max-width: 400px;
@@ -33,6 +31,7 @@ body {
     padding: 20px 20px 20px 20px;
 }
 
+/* Banner Image Styles */
 .banner-image {
     width: 100%;
     max-width: 400px;
@@ -40,6 +39,7 @@ body {
     display: block;
 }
 
+/* Header Styles */
 h1 {
     margin-top: 0;
     color: #333;
@@ -47,15 +47,18 @@ h1 {
     font-size: 24px;
 }
 
+/* Form Styles */
 .form-floating {
     margin-top: 10px;
 }
 
+/* Label Styles */
 label {
     font-weight: bold;
     color: #333;
 }
 
+/* Input Styles */
 .input {
     width: 93%;
     padding: 10px;
@@ -65,6 +68,8 @@ label {
     margin-bottom: 10px;
     margin-right: 8px;
 }
+
+/* Button Styles */
 .Btns {
     margin-bottom: 10px;
 }
@@ -86,15 +91,20 @@ label {
         background-color: #0056b3;
     }
 
+/* Error Message Styles */
 .error-message {
     color: red;
     font-size: 14px;
     margin-top: 10px;
 }
 
-/* Add a media query for smaller screens */
+/* Media Query for Smaller Screens */
 @media (max-width: 576px) {
     .card {
         max-width: 100%;
+    }
+
+    .banner-image {
+        max-width: 80%;
     }
 }

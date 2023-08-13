@@ -11,17 +11,19 @@ namespace Project_Aris
         string connectionString = "Data Source=ADITYA-PAL\\SQLEXPRESS;Initial Catalog=Project_Aris;Integrated Security=True;";
 
         int scientID;
-        string Supervisor;
+        int Supervisor;
         string selectedItems = string.Empty;
         string selectedValues= string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack) {
                 
-                scientID = Convert.ToInt32(Session["ID"]);
+                scientID = Convert.ToInt32(Session["ID"].ToString());
 
-                Supervisor = Convert.ToString(Session["SupervioserID"]);
+                Supervisor = int.Parse(Session["SupervioserID"].ToString());
 
+                int s = Supervisor;
+                Console.WriteLine(s);
                 BindDropdownItems();
                 BindDomain();
                 PopulateScientistsDropDown();
@@ -155,7 +157,7 @@ namespace Project_Aris
                 propAttachment = SaveAttachment(fileAttachment);
             }
 
-            string suervioser = Supervisor;
+            int suervioser = Supervisor;
 
             // Insert the data into the ProjProposal table
             InsertProposalData( scientistID, divisionID, domain, propType, propTitle, propSubAgency, propSubDate, propNature, propSummary, propFundEstimate, propPresentStatus, propPI, propCoPIs, propAttachment,suervioser);
@@ -177,12 +179,16 @@ namespace Project_Aris
             return attachmentFileName;
         }
 
-        private void InsertProposalData(int scientistID, int divisionID, string domain, string propType, string propTitle, string propSubAgency, string propSubDate, string propNature, string propSummary, decimal propFundEstimate, string propPresentStatus, string propPI, string propCoPIs, string propAttachment,string Supervisor)
+        private void InsertProposalData(int scientistID, int divisionID, string domain, string propType, string propTitle, string propSubAgency, string propSubDate, string propNature, string propSummary, decimal propFundEstimate, string propPresentStatus, string propPI, string propCoPIs, string propAttachment,int Supervisor)
         {
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "INSERT INTO ProjProposal (ScientID, DivID, PropUnderDomain, PropType, PropTitle, PropSubAgency, PropSubDate, PropNature, PropSummary, PropFundEstimate, PropPresentStatus, PropPI, PropCoPIs, PropAttachment,SupervisoerID) VALUES (@ScientID, @DivID, @PropUnderDomain, @PropType, @PropTitle, @PropSubAgency, @PropSubDate, @PropNature, @PropSummary, @PropFundEstimate, @PropPresentStatus, @PropPI, @PropCoPIs, @PropAttachment,@SupervisoerID)";
+                string query = "INSERT INTO ProjProposal (ScientID, DivID, PropUnderDomain, PropType, PropTitle, " +
+                    "PropSubAgency, PropSubDate, PropNature, PropSummary, PropFundEstimate, PropPresentStatus, PropPI," +
+                    " PropCoPIs, PropAttachment,SupervisoerID) VALUES (@ScientID, @DivID, @PropUnderDomain, @PropType, " +
+                    "@PropTitle, @PropSubAgency, @PropSubDate, @PropNature, @PropSummary, @PropFundEstimate, @PropPresentStatus," +
+                    " @PropPI, @PropCoPIs, @PropAttachment,@SupervisoerID)";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@ScientID", scientistID);
