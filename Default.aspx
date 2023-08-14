@@ -5,11 +5,13 @@
 
 <head runat="server">
     <title>Project Management Portal</title>
-    <link rel="stylesheet" type="text/css" href="Style/Default.css" />
+    <link rel="stylesheet" type="text/css" href="Style/default.css"/>
+    <script src="Scripts/slideshow.js"></script>
 </head>
 
 <body class="bg">
     <form runat="server">
+        <div class="slideshow"></div> <!-- Slideshow Container -->
         <div class="card">
         <img src="Images/ivribaner.png" alt="Banner Image" class="banner-image" />
         <h1>Welcome to Project Management Portal</h1>

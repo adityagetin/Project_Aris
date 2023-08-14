@@ -6,7 +6,7 @@
 <head runat="server">
     <title>Add New Proposal</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link href="../Style/form.css" type="text/css" rel="stylesheet" />
+    <link href="../Style/Forms.css" type="text/css" rel="stylesheet" />
 
   
 </head>
@@ -16,9 +16,8 @@
         <asp:Panel ID="pnlCreateScientist" runat="server">
             <div class="content">
                 <form action="#" runat="server">
-
-                      
                     <div class="user-details">
+                         
                          <div class="input-box">
                             <label for="txtPropTitle">Proposal Title:</label>
                             <asp:TextBox ID="txtPropTitle" runat="server" CssClass="input-field"></asp:TextBox>
@@ -87,7 +86,7 @@
                         </div>
                         <div class="input-box">
                             <label for="txtPropSummary">Summary:</label><br/>
-                            <asp:TextBox ID="txtPropSummary" runat="server"   TextMode="MultiLine" Rows="4"  CssClass="input-field" ></asp:TextBox>
+                            <asp:TextBox ID="txtPropSummary" runat="server"   TextMode="MultiLine" Rows="2"  CssClass="input-field" ></asp:TextBox>
                         </div>
                     </div>
                      

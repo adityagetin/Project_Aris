@@ -1,0 +1,77 @@
+﻿/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+/* Reset and Defaults */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Navigation Bar Styles */
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2980b9;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    height: 75px;
+    padding: 0 20px;
+    color: #fff;
+    /* Add sticky positioning */
+    position: sticky;
+    top: 0; /* Stick to the top of the viewport */
+    z-index: 100; /* Adjust the z-index as needed */
+}
+
+.welcome h3 {
+    font-size: 27px;
+    font-weight: 600;
+}
+
+.options a {
+    color: #fff;
+    font-size: 17px;
+    font-weight: 500;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+/* Page Container Styles */
+#pageContainer {
+    margin-top: 1%;
+    overflow: hidden;
+    position: relative;
+    height: calc(100vh - 20px); /* Adjust the margin-top value if necessary */
+}
+
+.page {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+    .page iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+/* Button Styles */
+.button a {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: #fff;
+    background: #2980b9;
+    padding: 7px 12px;
+    font-size: 18px;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.15);
+}
+
+remove the sctoller bar from it

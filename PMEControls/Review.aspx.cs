@@ -46,7 +46,7 @@ namespace Project_Aris
                 connection.Open();
                     try
                     {
-                        string insertQuery = "INSERT INTO PropReviewComm (ProposalID, ReviewMeetingDt, ReviewAction, ReviewComent, FileName, ProceedingAttchment) " +
+                        string insertQuery = "INSERT INTO PropReviewComm ([ProposalID],[ReviewMeetingDt],[ReviewAction],[ReviewComment],[FileName],[ProceedingAttachment]) " +
                                              "VALUES (@ProposalID, @ReviewMeetingDt, @ReviewAction, @ReviewComent, @FileName, @ProceedingAttachment)";
 
                         using (SqlCommand command = new SqlCommand(insertQuery, connection))
@@ -78,7 +78,7 @@ namespace Project_Aris
                         }
 
                         string GetSubmissonIDQuery = "SELECT [SubmissionID] FROM [ProjProposalSubmission] WHERE [ProposalID] = @ID";
-                        string ProjProposalApprovalQuery = "UPDATE [ProjProposalApprovalProcess] SET [SubmissionStatus] = @Status WHERE [SubmissionID] = @Sid";
+
 
                         string Sid;
                         using (SqlCommand command4 = new SqlCommand(GetSubmissonIDQuery, connection))
@@ -98,7 +98,8 @@ namespace Project_Aris
                             reader.Close();
                         }
 
-                        using (SqlCommand cmd = new SqlCommand(ProjProposalApprovalQuery, connection))
+                    string ProjProposalApprovalQuery = "UPDATE [ProjProposalApprovalProcess] SET [SubmissionStatus] = @Status WHERE [SubmissionID] = @Sid";
+                    using (SqlCommand cmd = new SqlCommand(ProjProposalApprovalQuery, connection))
                         {
                             cmd.Parameters.AddWithValue("@Status", "UNDER REVIEW");
                             cmd.Parameters.AddWithValue("@Sid", Sid);

@@ -16,12 +16,12 @@ namespace Project_Aris
         string selectedValues= string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
+            scientID = Convert.ToInt32(Session["ID"].ToString());
+            Supervisor = int.Parse(Session["SupervioserID"].ToString());
+
             if (!IsPostBack) {
                 
-                scientID = Convert.ToInt32(Session["ID"].ToString());
-
-                Supervisor = int.Parse(Session["SupervioserID"].ToString());
-
+                
                 int s = Supervisor;
                 Console.WriteLine(s);
                 BindDropdownItems();
@@ -29,6 +29,8 @@ namespace Project_Aris
                 PopulateScientistsDropDown();
                 SetDivIDFromDatabase(scientID);
                 txtPropSubDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                //Scid.Text = scientID;
+                //Suid.Text = Supervisor;
             }
                 
 
@@ -215,7 +217,12 @@ namespace Project_Aris
         private void ClearFormFields()
         {
 
-            // Clear values of other form fields
+            txtPropTitle.Text=null;
+            txtPropSubAgency.Text = null;
+            txtPropSummary.Text = null;
+            txtPropFundEstimate.Text = null;
+            txtPropPresentStatus.Text = null;
+         
         }
     }
 }

@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Proposal Forwarding</title>
-     <link href="../Style/form.css" rel="stylesheet" type="text/css" />
+     <link href="../Style/Forms.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div class="container">

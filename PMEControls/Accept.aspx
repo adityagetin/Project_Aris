@@ -4,104 +4,59 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Approval</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            padding: 20px;
-            background-image: radial-gradient(circle at 30% 86%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 8%, transparent 8%, transparent 92%), radial-gradient(circle at 55% 100%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 8%, transparent 8%, transparent 92%), radial-gradient(circle at 40% 75%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 6%, transparent 6%, transparent 94%), radial-gradient(circle at 7% 99%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 6%, transparent 6%, transparent 94%), radial-gradient(circle at 69% 76%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 6%, transparent 6%, transparent 94%), radial-gradient(circle at 2% 35%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 6%, transparent 6%, transparent 94%), radial-gradient(circle at 14% 48%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 6%, transparent 6%, transparent 94%), radial-gradient(circle at 28% 87%, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.04) 4%, transparent 4%, transparent 96%), radial-gradient(circle at 65% 14%, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.04) 4%, transparent 4%, transparent 96%), radial-gradient(circle at 51% 36%, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.04) 4%, transparent 4%, transparent 96%), radial-gradient(circle at 6% 93%, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.04) 4%, transparent 4%, transparent 96%), linear-gradient(135deg, #17e9ad, #1d18d0);
-  
-        }
-
-        form {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 4px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        input[type="text"],
-        input[type="date"],
-        input[type="file"] {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 15px;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-        }
-        input[type="date"]::-webkit-inner-spin-button,
-        input[type="date"]::-webkit-calendar-picker-indicator {
-            display: none;
-            -webkit-appearance: none;
-        }
-
-        input[type="file"] {
-            padding: 4px;
-        }
-
-        input[type="submit"] {
-            background-color: #4caf50;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-    </style>
+    <title>Proposal Acceptance</title>
+    <link href="../Style/Forms.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
-            <div>
-            <label for="txtProposalID">Proposal ID:</label>
-            <asp:TextBox ID="txtProposalID" runat="server" ReadOnly="true" ></asp:TextBox>
-        </div>
-        <div>
-            <label for="txtProjTitle">Project Title:</label>
-            <asp:TextBox ID="txtProjTitle" runat="server" ReadOnly="true" ></asp:TextBox>
-        </div>
-        <div>
-            <label for="txtApprovedTerm">Approved Term:</label>
-            <asp:TextBox ID="txtApprovedTerm" runat="server"></asp:TextBox>
-        </div>
-        <div>
-             <label for="txtStartDate">Start Date:</label>
-              <asp:TextBox ID="txtStartDate" runat="server" TextMode="Date"></asp:TextBox>
+    <div class="container">
+        <h2>Proposal Acceptance</h2>
+        <asp:Panel ID="pnlAcceptProposal" runat="server">
+            <div class="content">
+                <form runat="server">
+                    <div class="user-details">
+                        <div class="input-box">
+                            <asp:Label runat="server" AssociatedControlID="txtProposalID">Proposal ID:</asp:Label>
+                            <asp:TextBox ID="txtProposalID" runat="server" ReadOnly="true" CssClass="input-field"></asp:TextBox>
+                        </div>
+                        <div class="input-box">
+                            <asp:Label runat="server" AssociatedControlID="txtProjTitle">Project Title:</asp:Label>
+                            <asp:TextBox ID="txtProjTitle" runat="server" ReadOnly="true" CssClass="input-field"></asp:TextBox>
+                        </div>
+                        <div class="input-box">
+                            <asp:Label runat="server" AssociatedControlID="txtApprovedTerm">Approved Term:</asp:Label>
+                            <asp:TextBox ID="txtApprovedTerm" CssClass="input-field" runat="server"></asp:TextBox>
+                        </div>
+                        <div class="input-box">
+                            <asp:Label runat="server" AssociatedControlID="txtStartDate">Start Date:</asp:Label>
+                            <asp:TextBox ID="txtStartDate" CssClass="input-field" runat="server" TextMode="Date"></asp:TextBox>
+                        </div>
+                        <div class="input-box">
+                            <asp:Label runat="server" AssociatedControlID="txtCompletionDate">Completion Date:</asp:Label>
+                            <asp:TextBox ID="txtCompletionDate" CssClass="input-field" runat="server" TextMode="Date"></asp:TextBox>
+                        </div>
+                        <div class="input-box">
+                            <asp:Label runat="server" AssociatedControlID="txtApprovedBudget">Approved Budget:</asp:Label>
+                            <asp:TextBox ID="txtApprovedBudget" CssClass="input-field" runat="server"></asp:TextBox>
+                        </div>
+                        <div class="input-box">
+                            <asp:Label runat="server">Approval Letter:</asp:Label>
+                            <input type="file" id="fileApprovalLetter" runat="server" class="input-field" />
+                        </div>
+                        <div class="input-box">
 
-        <div>
-            <label for="txtCompletionDate">Completion Date:</label>
-            <asp:TextBox ID="txtCompletionDate" runat="server" TextMode="Date"></asp:TextBox>
-        </div>
-        <div>
-            <label for="txtApprovedBudget">Approved Budget:</label>
-            <asp:TextBox ID="txtApprovedBudget" runat="server"></asp:TextBox>
-        </div>
-        <div>
-            <label for="fileApprovalLetter">Approval Letter:</label>
-            <input type="file" id="fileApprovalLetter" runat="server" />
-        </div>
-        <div>
-            <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
-        </div>
-        </div>
-    </form>
+                        </div>
+
+                    </div>
+                    <div class="button">
+                        <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="register-btn" OnClick="btnSubmit_Click" />
+                    </div>
+                </form>
+                <div>
+                    <asp:Label ID="ErrorLabel" runat="server" CssClass="error-message" Visible="false"></asp:Label>
+                    <asp:Label ID="SuccessLabel" runat="server" CssClass="success-message" Visible="false"></asp:Label>
+                </div>
+            </div>
+        </asp:Panel>
+    </div>
 </body>
 </html>

@@ -54,7 +54,7 @@ namespace Project_Aris.DivisionControls
             Insert_From(PropID, action, forwardTo, forwardFrom,Date,comment);
             Update_supervioserID(PropID,forwardTo);
 
-            Response.Redirect("SubmissionTable.aspx");
+            Response.Redirect("SubmissionsTable.aspx");
 
         }
 
@@ -82,16 +82,6 @@ namespace Project_Aris.DivisionControls
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@SupervisoerID", forwardTo);
-                cmd.Parameters.AddWithValue("@ProposalID", PropID);
-
-                conn.Open();
-                cmd.ExecuteNonQuery();
-            }
-            string qurey2 = "UPDATE [ProjProposalApprovalProcess] SET [SupervisoerID]=@SupervisoerID WHERE  [ProposalID]= @ProposalID ";
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                SqlCommand cmd = new SqlCommand(qurey2, conn);
                 cmd.Parameters.AddWithValue("@SupervisoerID", forwardTo);
                 cmd.Parameters.AddWithValue("@ProposalID", PropID);
 

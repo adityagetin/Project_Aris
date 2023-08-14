@@ -199,12 +199,16 @@ namespace Project_Aris.Reports
                             card.Controls.Add(supervioserLabel);
 
                             Label AppLlabel = new Label();
-                            AppLlabel.Text = "<tr><th>Approval Letter:</th><td><a target=\"_blank\" href=\"" + approvalletter + "\">View</a></td></tr>";
+                            AppLlabel.Text = "<tr><th>Approval Letter:</th><td><a target=\"_blank\" href=\"\'" + approvalletter + "\'\">View</a></td></tr>";
                             card.Controls.Add(AppLlabel);
 
                             Label proplabel = new Label();
                             proplabel.Text = "<tr><th>Approved Proposal Attchment :</th><td><a target=\"_blank\" href=\"" + ApprovedProposalAttch + "\">View</a></td></tr>";
                             card.Controls.Add(proplabel);
+
+                            Label print = new Label();
+                            print.Text = "<button id=\"btnPrint\" class=\"print-button\" onclick=\"printData()\">Print</button>";
+                            card.Controls.Add(print);
 
                             Data_Cards.Controls.Add(card);
 
@@ -213,8 +217,6 @@ namespace Project_Aris.Reports
                 }
             }
         }
-
-        // Logic for division-specific report
         private void GetDivisionReport(int divisionId)
         {
             string query = "SELECT PP.[ScientID], PP.[DivID], PP.[PropUnderDomain], PP.[PropType], " +
@@ -338,6 +340,10 @@ namespace Project_Aris.Reports
                             proplabel.Text = "<tr><th>Approved Proposal Attachment: " + "<td>" + ApprovedProposalAttch + "</td></tr></table>";
                             card.Controls.Add(proplabel);
 
+                            Label print = new Label();
+                            print.Text = "<button id=\"btnPrint\" class=\"print-button\" onclick=\"printData()\">Print</button>";
+                            card.Controls.Add(print);
+
                             Data_Cards.Controls.Add(card);
 
                         }
@@ -345,9 +351,6 @@ namespace Project_Aris.Reports
                 }
             }
         }
-
-
-        // Logic for domain-specific report
         private void GetDomainReport(string domain)
         {
             string query = "SELECT PP.[ScientID], PP.[DivID], PP.[PropUnderDomain], PP.[PropType], " +
@@ -470,6 +473,10 @@ namespace Project_Aris.Reports
                             Label proplabel = new Label();
                             proplabel.Text = "<tr><th>Approved Proposal Attachment: " + "<td>" + ApprovedProposalAttch + "</td></tr></table>";
                             card.Controls.Add(proplabel);
+
+                            Label print = new Label();
+                            print.Text = "<button id=\"btnPrint\" class=\"print-button\" onclick=\"printData()\">Print</button>";
+                            card.Controls.Add(print);
 
                             Data_Cards.Controls.Add(card);
 

@@ -4,10 +4,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Project Proposals</title>
-    <link href="../Style/table.css" rel="stylesheet" type="text/css" />
+    <link href="../Style/Tables.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <h2>Project Proposals </h2>
+    <br />
     <form id="formTable" runat="server">
         <table>
             <tr>
@@ -25,7 +26,6 @@
                 <th>Present Status</th>
                 <th>PI</th>
                 <th>Co-PIs</th>
-                <th>SupervisoerID</th>
                 <th>Attachment</th>
                 <th>Action</th>
 
@@ -49,11 +49,9 @@
                         <td><asp:Label ID="lblPresentStatus" runat="server" Text='<%# Eval("PropPresentStatus") %>'></asp:Label></td>
                         <td><%# Eval("PropPI") %></td>
                         <td><%# Eval("PropCoPIs") %></td>
-                        <td><%#Eval("SupervisoerID") %></td>
                         <td><a href='<%# Eval("PropAttachment") %>' target="_blank" id ="Attach">View Attachment</a></td>
                         <td>
                             <asp:DropDownList ID="DropDownList1" runat="server" CssClass="status-field">
-                                <asp:ListItem Text="Pending" Value="Pending"></asp:ListItem>
                                 <asp:ListItem Text="Approved" Value="Approved"></asp:ListItem>
                                 <asp:ListItem Text="Rejected" Value="Rejected"></asp:ListItem>
                             </asp:DropDownList>

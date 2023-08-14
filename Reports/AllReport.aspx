@@ -1,31 +1,10 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AllReport.aspx.cs" Inherits="Project_Aris.Reports.AllReport" %>
-
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Reports</title>
-    <link rel="stylesheet" type="text/css" href="../Style/report.css" />
-
-    <!-- Add JavaScript code -->
-    <script>
-        function resetDropdowns(selectedDropdown) {
-            var ddlScientist = document.getElementById('<%= ddlScientist.ClientID %>');
-            var ddlDivision = document.getElementById('<%= ddlDivision.ClientID %>');
-            var ddlDomain = document.getElementById('<%= ddlDomain.ClientID %>');
-
-            if (selectedDropdown === ddlScientist) {
-                ddlDivision.selectedIndex = -1;
-                ddlDomain.selectedIndex = -1;
-            } else if (selectedDropdown === ddlDivision) {
-                ddlScientist.selectedIndex = -1;
-                ddlDomain.selectedIndex = -1;
-            } else if (selectedDropdown === ddlDomain) {
-                ddlScientist.selectedIndex = -1;
-                ddlDivision.selectedIndex = -1;
-            }
-        }
-    </script>
+        <link rel="stylesheet" type="text/css" href="../Style/report.css" />
+        <script src="../Scripts/Print.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">

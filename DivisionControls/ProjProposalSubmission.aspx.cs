@@ -76,12 +76,13 @@ namespace Project_Aris.DivisionControls
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "UPDATE [ProjProposal] SET [SubmissionStatus] = @SubmissionStatus WHERE [ProposalID] = @ID";
+                    string query = "UPDATE [ProjProposal] SET [PropPresentStatus] = @SubmissionStatus WHERE [ProposalID] = @ID";
                     SqlCommand command = new SqlCommand(query, connection);
                     command.Connection.Open();
                     command.Parameters.AddWithValue("@SubmissionStatus", newStatus);
                     command.Parameters.AddWithValue("@ID", proposalID);
                     command.ExecuteNonQuery();
+                    command.Connection.Close();
                 }
             }
             catch (Exception ex)
@@ -111,8 +112,8 @@ namespace Project_Aris.DivisionControls
                     cmd.Parameters.AddWithValue("@SubmissionStatus", status);
                     cmd.Parameters.AddWithValue("@SubmissionDate", date);
                     cmd.Parameters.AddWithValue("@Comment", status);
-                    cmd.Connection.Open();
                     cmd.ExecuteNonQuery();
+                    cmd.Connection.Close();
                 }
             }
             catch (Exception ex)

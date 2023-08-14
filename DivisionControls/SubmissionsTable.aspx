@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Approvals</title>
-    <link href="../Style/table.css" rel="stylesheet" type="text/css" />
+    <link href="../Style/Tables.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="formSubmissions" runat="server">
